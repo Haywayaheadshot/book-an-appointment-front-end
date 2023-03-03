@@ -6,15 +6,20 @@ function SignUp() {
   const [password, setpassword] = useState('');
   const [photo, setphoto] = useState('');
   const [username, setusername] = useState('');
+
+
+
   const submitHandeller = (e) => {
-    e.target.preventDefault();
-    const url = 'http://http://[::1]:3000/api/signup';
+    e.preventDefault();
+    const url = 'http://localhost:3000/api/signup';
     const data = {
-      name,
-      email,
-      password,
-      photo,
-      username,
+      user: {
+        name: name,
+        email:  email,
+        password: password,
+        username: username,
+        photo: photo
+      },
     };
     const options = {
       method: 'POST',
@@ -25,13 +30,16 @@ function SignUp() {
       body: JSON.stringify(data),
     };
 
-    fetch(url, options).then((response) => {
-      console.log(response.status);
+    fetch(url, options)
+    .then(res => res.json())
+    .then((data) => {
+      console.log(data);
     });
   };
 
+
   return (
-    <form>
+    <form onSubmit={submitHandeller}>
       <label htmlFor="name">
         name
         <input
@@ -86,7 +94,7 @@ function SignUp() {
         />
       </label>
 
-      <button type="submit" onSubmit={submitHandeller}>
+      <button type="submit" >
         Sign up
       </button>
     </form>
