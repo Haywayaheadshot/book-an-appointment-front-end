@@ -7,18 +7,16 @@ function SignUp() {
   const [photo, setphoto] = useState('');
   const [username, setusername] = useState('');
 
-
-
   const submitHandeller = (e) => {
     e.preventDefault();
     const url = 'http://localhost:3000/api/signup';
     const data = {
       user: {
-        name: name,
-        email:  email,
-        password: password,
-        username: username,
-        photo: photo
+        name,
+        email,
+        password,
+        username,
+        photo,
       },
     };
     const options = {
@@ -31,12 +29,11 @@ function SignUp() {
     };
 
     fetch(url, options)
-    .then(res => res.json())
-    .then((data) => {
-      console.log(data);
-    });
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   };
-
 
   return (
     <form onSubmit={submitHandeller}>
@@ -94,7 +91,7 @@ function SignUp() {
         />
       </label>
 
-      <button type="submit" >
+      <button type="submit">
         Sign up
       </button>
     </form>
