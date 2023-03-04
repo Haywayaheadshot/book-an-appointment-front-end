@@ -1,20 +1,20 @@
 .sign-up-form {
-    display: grid;
-    place-items: center;
-    padding: 15vh 0;
-    gap: 20px;
+  display: grid;
+  place-items: center;
+  padding: 15vh 0;
+  gap: 20px;
 }
 
 .sign-up-form label,
 .sign-up-form section {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
 }
 
 .sign-up-form label input {
-    min-width: 60vw;
-    min-height: 20px;
+  min-width: 60vw;
+  min-height: 20px;
 }
