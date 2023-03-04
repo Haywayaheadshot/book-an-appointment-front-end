@@ -61,7 +61,6 @@ function SignUp() {
       fetch(url, options)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           const form = document.querySelector('.sign-up-form');
           if (data.success === false) {
             const apiError = document.createElement('div');
@@ -76,7 +75,7 @@ function SignUp() {
             setUsername('');
             // show success message to the user
             const apiSuccess = document.createElement('div');
-            apiSuccess.innerHTML = `<h4>Account has been created succesfully</h4>`;
+            apiSuccess.innerHTML = '<h4>Account has been created succesfully</h4>';
             form.appendChild(apiSuccess);
           } else {
             // handle other cases
@@ -98,85 +97,85 @@ function SignUp() {
 
   return (
     <div>
-    <form onSubmit={submitHandeller} className="sign-up-form">
-      <label htmlFor="name">
-        Name
-        <input
-          type="text"
-          name="name"
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-        />
-      <h2 className="sign-up-name-error">
-        Please input your name!
-      </h2>
-      </label>
+      <form onSubmit={submitHandeller} className="sign-up-form">
+        <label htmlFor="name">
+          Name
+          <input
+            type="text"
+            name="name"
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
+          <h2 className="sign-up-name-error">
+            Please input your name!
+          </h2>
+        </label>
 
-      <label htmlFor="email">
-        Email
-        <input
-          type="email"
-          name="email"
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-        />
-        <h2 className="sign-up-email-error">
-          Please input a correct email!
-        </h2>
-      </label>
-      <label htmlFor="password">
-        Password
-        <input
-          type="password"
-          name="password"
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-        <h2 className="sign-up-password-error">
-         Your passoword should be atleast 6 characters!
-        </h2>
-      </label>
+        <label htmlFor="email">
+          Email
+          <input
+            type="email"
+            name="email"
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
+          <h2 className="sign-up-email-error">
+            Please input a correct email!
+          </h2>
+        </label>
+        <label htmlFor="password">
+          Password
+          <input
+            type="password"
+            name="password"
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
+          <h2 className="sign-up-password-error">
+            Your passoword should be atleast 6 characters!
+          </h2>
+        </label>
 
-      <label htmlFor="photo">
-        Photo
-        <input
-          type="file"
-          name="photo"
-          onChange={(e) => {
-            setPhoto(e.target.value);
-          }}
-        />
-      </label>
+        <label htmlFor="photo">
+          Photo
+          <input
+            type="file"
+            name="photo"
+            onChange={(e) => {
+              setPhoto(e.target.value);
+            }}
+          />
+        </label>
 
-      <label htmlFor="username">
-        Username
-        <input
-          type="text"
-          name="username"
-          onChange={(e) => {
-            setUsername(e.target.value);
-          }}
-        />
-        <h2 className="sign-up-username-error">
-          Please use a Username that has atleast 5 characters!
-        </h2>
-      </label>
+        <label htmlFor="username">
+          Username
+          <input
+            type="text"
+            name="username"
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
+          />
+          <h2 className="sign-up-username-error">
+            Please use a Username that has atleast 5 characters!
+          </h2>
+        </label>
 
-      <button type="submit">
-        Sign up
-      </button>
-    </form>
-    <section>
-      <h3>
-        Already have an account?
-      </h3>
-      <button type="button">
-        Login
-      </button>
-    </section>
+        <button type="submit">
+          Sign up
+        </button>
+      </form>
+      <section>
+        <h3>
+          Already have an account?
+        </h3>
+        <button type="button">
+          Login
+        </button>
+      </section>
     </div>
   );
 }
