@@ -9,31 +9,54 @@ function SignUp() {
 
   const submitHandeller = (e) => {
     e.preventDefault();
-    const url = 'http://localhost:3000/api/signup';
     const data = {
       user: {
         name,
         email,
         password,
         username,
-        photo,
+        photo: photo || 'default-avatar.png', // set default image path if photo is empty
       },
     };
-    const options = {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json;charset=UTF-8',
-      },
-      body: JSON.stringify(data),
-    };
-
-    fetch(url, options)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
+    if (data.user.name === '') {
+      // Show error message
+    } else if (data.user.email === '' || !data.user.email.includes('@')) {
+      // show error message
+    } else if (data.user.password.length < 6) {
+      // show error message
+    } else {
+      const url = 'http://localhost:3000/api/signup';
+      const options = {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json;charset=UTF-8',
+        },
+        body: JSON.stringify(data),
+      };
+  
+      fetch(url, options)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.status === 'reject') {
+            throw new Error(data.message),
+            alert('Registration Unsuccessful. Please refresh and try again!');
+          } else if (data.status === 'fulfilled') {
+            // show success message to the user
+            alert('Registration successful!');
+            // or use a state variable to show the success message in the UI
+          } else {
+            // handle other cases
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+          // show error message to the user
+        });
+    }
   };
+  
 
   return (
     <form onSubmit={submitHandeller}>
