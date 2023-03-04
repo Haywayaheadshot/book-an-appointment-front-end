@@ -34,14 +34,14 @@ function SignUp() {
         },
         body: JSON.stringify(data),
       };
-  
+
       fetch(url, options)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
           if (data.status === 'reject') {
-            throw new Error(data.message),
-            alert('Registration Unsuccessful. Please refresh and try again!');
+            throw new Error(data.message);
+            // alert('Registration Unsuccessful. Please refresh and try again!');
           } else if (data.status === 'fulfilled') {
             // show success message to the user
             alert('Registration successful!');
@@ -56,7 +56,6 @@ function SignUp() {
         });
     }
   };
-  
 
   return (
     <form onSubmit={submitHandeller}>
