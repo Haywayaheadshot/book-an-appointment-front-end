@@ -7,6 +7,7 @@ function SignUp() {
   const [password, setPassword] = useState('');
   const [photo, setPhoto] = useState('');
   const [username, setUsername] = useState('');
+
   const nameErrorMessage = document.querySelector('.sign-up-name-error');
   const emailErrorMessage = document.querySelector('.sign-up-email-error');
   const passErrorMessage = document.querySelector('.sign-up-password-error');
@@ -61,11 +62,16 @@ function SignUp() {
       fetch(url, options)
         .then((res) => res.json())
         .then((data) => {
+          // eslint-disable-next-line
+          console.error(data);
           const form = document.querySelector('.sign-up-form');
           if (data.success === false) {
             const apiError = document.createElement('div');
             apiError.innerHTML = data.errors;
             form.appendChild(apiError);
+            setTimeout(() => {
+              apiError.remove();
+            }, 5000);
           } else if (data.success === true) {
             // Clear all inputs
             setName('');
@@ -74,9 +80,15 @@ function SignUp() {
             setPhoto('');
             setUsername('');
             // show success message to the user
+            const body = document.querySelector('#root');
             const apiSuccess = document.createElement('div');
             apiSuccess.innerHTML = '<h4>Account has been created succesfully</h4>';
-            form.appendChild(apiSuccess);
+            body.appendChild(apiSuccess);
+            setTimeout(() => {
+              apiSuccess.remove();
+            }, 10000);
+            // redirect to a new page
+            window.location.href = '/logInPage';
           } else {
             // handle other cases
             const apiOtherError = document.createElement('div');
@@ -86,9 +98,13 @@ function SignUp() {
               </h4>
             `;
             form.appendChild(apiOtherError);
+            setTimeout(() => {
+              apiOtherError.remove();
+            }, 5000);
           }
         })
         .catch((error) => {
+          // eslint-disable-next-line
           console.error(error);
           // show error message to the user
         });
@@ -97,7 +113,7 @@ function SignUp() {
 
   return (
     <div>
-      <form onSubmit={submitHandeller} className="sign-up-form">
+      <form className="sign-up-form" onSubmit={submitHandeller}>
         <label htmlFor="name">
           Name
           <input
@@ -163,7 +179,6 @@ function SignUp() {
             Please use a Username that has atleast 5 characters!
           </h2>
         </label>
-
         <button type="submit">
           Sign up
         </button>
