@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import '../styles/sign-up.css';
 
 function SignUp() {
@@ -187,9 +188,11 @@ function SignUp() {
         <h3>
           Already have an account?
         </h3>
-        <button type="button">
-          Login
-        </button>
+        <NavLink to="./logInPage">
+          <button type="button">
+            Login
+          </button>
+        </NavLink>
       </section>
     </div>
   );
