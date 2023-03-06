@@ -29,7 +29,9 @@ code {
 .sign-up-username-error,
 .sign-up-name-error,
 .sign-up-password-error,
-.sign-up-email-error {
+.sign-up-email-error,
+.login-username-error,
+.login-password-error {
   display: none;
   border: 1px dashed red;
   padding: 2px 10px;
