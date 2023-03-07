@@ -1,11 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/nav-bar.css';
 import { GiStethoscope } from 'react-icons/gi';
 import Hamburger from 'hamburger-react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { getUsers } from '../redux/users/Users';
 
 function NavBar() {
   const [open, setClose] = useState(false);
+
+  const user = useSelector((state) => state.users);
+  const dispatch = useDispatch();
+
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const username = searchParams.get('username');
+
+  const filteredUser = user.filter((user) => user.username
+    .toLowerCase().match(username.toLowerCase()));
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
   const toggleMenu = () => {
     setClose(!open);
     const body = document.getElementById('body');
@@ -29,8 +45,14 @@ function NavBar() {
       { open
         ? (
           <ul className="hamburger-pop-ul">
-            <li>Display user Image</li>
-            <li>Display username</li>
+            {filteredUser.map((user) => (
+              <li key={user.username}>
+                <img src={user.photo} alt="DP" className="user-dp" />
+                <h3>
+                  {user.name}
+                </h3>
+              </li>
+            ))}
             <li>
               <NavLink to="/landingPage">
                 <button type="button" onClick={() => toggleMenu(false)}>
@@ -63,9 +85,11 @@ function NavBar() {
               </button>
             </li>
             <li>
-              <button type="button" onClick={() => toggleMenu(false)}>
-                Log Out
-              </button>
+              <NavLink to="/logInPage">
+                <button type="button" onClick={() => toggleMenu(false)}>
+                  Log Out
+                </button>
+              </NavLink>
             </li>
           </ul>
         ) : null}
