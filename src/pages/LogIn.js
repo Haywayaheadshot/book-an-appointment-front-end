@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 function LogIn() {
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
-  const loginUserError = document.querySelector('.login-username-error');
-  const loginPasswordError = document.querySelector('.login-password-error');
+  const [loginError, setLoginError] = useState('');
+
+  const navigate = useNavigate();
 
   const submitHandeller = (e) => {
     e.preventDefault();
@@ -16,11 +17,9 @@ function LogIn() {
       },
     };
     if (data.user.username === '') {
-      loginUserError.style.display = 'block';
-      loginPasswordError.style.display = 'none';
+      setLoginError('Username cannot be empty!');
     } else if (data.user.password.length < 6) {
-      loginUserError.style.display = 'none';
-      loginPasswordError.style.display = 'block';
+      setLoginError('Password must be 6 characters or more. Please check again!');
     } else {
       const url = 'http://localhost:3000/api/login';
       const options = {
@@ -39,7 +38,7 @@ function LogIn() {
           if (data.message === 'success') {
             // redirect to user page
             const encodedUsername = encodeURIComponent(username);
-            window.location.href = `/landingPage?username=${encodedUsername}`;
+            navigate(`/landingPage?username=${encodedUsername}`);
           } else {
             // handle other cases
             const apiOtherError = document.createElement('div');
@@ -69,9 +68,6 @@ function LogIn() {
               setUsername(e.target.value);
             }}
           />
-          <h4 className="login-username-error">
-            Username cannot be empty!
-          </h4>
         </label>
         <label htmlFor="password">
           Password
@@ -82,12 +78,8 @@ function LogIn() {
               setPassword(e.target.value);
             }}
           />
-          <h4 className="login-password-error">
-            Password must be 6 characters or more.
-            <br />
-            Please check again!
-          </h4>
         </label>
+        {loginError && <h4>{loginError}</h4>}
         <button type="submit">
           Login
         </button>
