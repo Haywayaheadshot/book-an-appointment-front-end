@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/nav-bar.css';
 import { GiStethoscope } from 'react-icons/gi';
 import Hamburger from 'hamburger-react';
@@ -22,15 +22,25 @@ function NavBar() {
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
+
+  if (!username) {
+    return null;
+  }
+
   const toggleMenu = () => {
     setClose(!open);
     const body = document.getElementById('body');
+    const doctor = document.querySelector('.doctors-container');
     if (!open) {
       body.classList.add('open');
+      doctor.classList.add('open');
     } else {
       body.classList.remove('open');
+      doctor.classList.remove('open');
     }
   };
+
+  const encodedUsername = encodeURIComponent(username);
 
   return (
     <div className="nav-bar-container">
@@ -54,21 +64,21 @@ function NavBar() {
               </li>
             ))}
             <li>
-              <NavLink to="/landingPage">
+              <NavLink to={`/landingPage?username=${encodedUsername}`}>
                 <button type="button" onClick={() => toggleMenu(false)}>
                   Doctors
                 </button>
               </NavLink>
             </li>
             <li>
-              <NavLink to="/reservationForm">
+              <NavLink to={`/reservationForm?username=${encodedUsername}`}>
                 <button type="button" onClick={() => toggleMenu(false)}>
                   Reserve A Doc
                 </button>
               </NavLink>
             </li>
             <li>
-              <NavLink to="/reservations">
+              <NavLink to={`/reservations?username=${encodedUsername}`}>
                 <button type="button" onClick={() => toggleMenu(false)}>
                   My Reservations
                 </button>
