@@ -1,18 +1,28 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { getDoctors } from '../redux/landingPage/LandingPage';
 import '../styles/landing-page.css';
 
 function LandingPage() {
   const doctor = useSelector((state) => state.doctors);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const username = searchParams.get('username');
 
   useEffect(() => {
     dispatch(getDoctors());
   }, [dispatch]);
+
+  if (!username) {
+    navigate('/');
+  }
+
   return (
     <div className="doctors-container">
+      <h1>Welcome, {username}</h1>
       { doctor.map((doctor) => (
         <NavLink to={`/${doctor.name}`} key={doctor.id}>
           <section className="doctor-section">
