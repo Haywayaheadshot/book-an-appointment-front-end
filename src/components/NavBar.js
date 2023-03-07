@@ -62,6 +62,11 @@ function NavBar() {
                 Delete Doc
               </button>
             </li>
+            <li>
+              <button type="button" onClick={() => toggleMenu(false)}>
+                Log Out
+              </button>
+            </li>
           </ul>
         ) : null}
     </div>
