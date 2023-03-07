@@ -8,6 +8,7 @@ import LandingPage from './LandingPage';
 import NavBar from '../components/NavBar';
 import MyReservations from './MyReservations';
 import ReserveForm from './ReserveForm';
+import Details from './Details';
 
 function Main() {
   const location = useLocation();
@@ -22,6 +23,7 @@ function Main() {
         <Route exact path="/landingPage" element={<LandingPage />} />
         <Route exact path="/reservations" element={<MyReservations />} />
         <Route exact path="/reservationForm" element={<ReserveForm />} />
+        <Route exact path="/:id" element={<Details />} />
       </Routes>
     </>
   );

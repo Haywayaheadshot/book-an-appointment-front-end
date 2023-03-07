@@ -38,7 +38,8 @@ function LogIn() {
           const form = document.querySelector('.sign-up-form');
           if (data.message === 'success') {
             // redirect to user page
-            window.location.href = '/landingPage';
+            const encodedUsername = encodeURIComponent(username);
+            window.location.href = `/landingPage?username=${encodedUsername}`;
           } else {
             // handle other cases
             const apiOtherError = document.createElement('div');
@@ -87,11 +88,17 @@ function LogIn() {
             Please check again!
           </h4>
         </label>
-
         <button type="submit">
           Login
         </button>
       </form>
+      <section>
+        <NavLink to="/">
+          <button type="button">
+            Sign Up
+          </button>
+        </NavLink>
+      </section>
     </div>
   );
 }

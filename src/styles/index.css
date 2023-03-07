@@ -48,3 +48,15 @@ ul {
 .open {
   overflow-y: hidden;
 }
+
+.user-dp {
+  max-width: 50px;
+  padding-top: 30px;
+}
+
+a,
+a:active,
+a:hover {
+  text-decoration: none;
+  color: #000;
+}
