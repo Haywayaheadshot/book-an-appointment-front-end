@@ -9,10 +9,11 @@ import NavBar from '../components/NavBar';
 import MyReservations from './MyReservations';
 import ReserveForm from './ReserveForm';
 import Details from './Details';
+// import NavBarWrapper from '../components/NavBarWrapper';
 
 function Main() {
   const location = useLocation();
-  const showNavBar = !['/', '/logInPage', '/signUp'].includes(location.pathname);
+  const showNavBar = ['/reservationForm', '/landingPage', '/reservationForm'].includes(location.pathname);
 
   return (
     <>
@@ -20,9 +21,11 @@ function Main() {
       <Routes>
         <Route exact path="/" element={<SignUp />} />
         <Route exact path="/logInPage" element={<LogIn />} />
+        {/* <NavBarWrapper> */}
         <Route exact path="/landingPage" element={<LandingPage />} />
         <Route exact path="/reservations" element={<MyReservations />} />
         <Route exact path="/reservationForm" element={<ReserveForm />} />
+        {/* </NavBarWrapper> */}
         <Route exact path="/:id" element={<Details />} />
       </Routes>
     </>

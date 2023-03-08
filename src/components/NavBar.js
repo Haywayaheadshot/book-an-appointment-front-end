@@ -23,9 +23,9 @@ function NavBar() {
     dispatch(getUsers());
   }, [dispatch]);
 
-  if (!username) {
-    return null;
-  }
+  // if (!username) {
+  //   return null;
+  // }
 
   const toggleMenu = () => {
     setClose(!open);

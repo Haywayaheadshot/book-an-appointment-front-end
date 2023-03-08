@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { NavLink, useNavigate, useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getDoctors } from '../redux/landingPage/LandingPage';
 import '../styles/details.css';
@@ -7,7 +7,7 @@ import '../styles/details.css';
 function Details() {
   const params = useParams();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const doctor = useSelector((state) => state.doctors);
 
@@ -17,13 +17,9 @@ function Details() {
   useEffect(() => {
     dispatch(getDoctors());
   }, [dispatch]);
-
-  if (!params) {
-    navigate('/');
-  }
   return (
     <div>
-      <NavLink to="/landingPage?username=:username">
+      <NavLink to="/landingPage">
         <button type="button">
           Back
         </button>

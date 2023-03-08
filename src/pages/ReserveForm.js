@@ -1,54 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function ReserveForm() {
   const [title, setTitle] = useState('');
-  const [reservstion, setReservstion] = useState('');
-  const [password, setPassword] = useState('');
-  const [photo, setPhoto] = useState('');
-  const [username, setUsername] = useState('');
-
-  const nameErrorMessage = document.querySelector('.sign-up-name-error');
-  const emailErrorMessage = document.querySelector('.sign-up-email-error');
-  const passErrorMessage = document.querySelector('.sign-up-password-error');
-  const userErrorMessage = document.querySelector('.sign-up-username-error');
+  const [reservation, setreservation] = useState('');
+  const [phonenumber, setPhonenumber] = useState('e.g. 1234567890');
+  const [purpose, setPurpose] = useState('');
+  const [location, setLocation] = useState('');
+  const [doctorsname, setDoctorsname] = useState('');
 
   const submitHandeller = (e) => {
     e.preventDefault();
     const data = {
       user: {
-        name,
-        email,
-        password,
-        username,
-        photo: photo || 'default-avatar.png', // set default image path if photo is empty
+        title,
+        reservation,
+        phonenumber,
+        purpose,
+        location,
+        doctorsname,
       },
     };
     if (data.user.name === '') {
       // Show error message
-      nameErrorMessage.style.display = 'block';
-      emailErrorMessage.style.display = 'none';
-      passErrorMessage.style.display = 'none';
-      userErrorMessage.style.display = 'none';
     } else if (data.user.email === '' || !data.user.email.includes('@')) {
       // show error message
-      nameErrorMessage.style.display = 'none';
-      emailErrorMessage.style.display = 'block';
-      passErrorMessage.style.display = 'none';
-      userErrorMessage.style.display = 'none';
     } else if (data.user.password.length < 6) {
       // show error message
-      nameErrorMessage.style.display = 'none';
-      emailErrorMessage.style.display = 'none';
-      passErrorMessage.style.display = 'block';
-      userErrorMessage.style.display = 'none';
+
     } else if ((data.user.username === '') || (data.user.username.length < 5)) {
       // show error message
-      nameErrorMessage.style.display = 'none';
-      emailErrorMessage.style.display = 'none';
-      passErrorMessage.style.display = 'none';
-      userErrorMessage.style.display = 'block';
     } else {
-      const url = 'http://localhost:3000/api/signup';
+      const url = 'http://localhost:3000/api/reservations';
       const options = {
         method: 'POST',
         headers: {
@@ -73,11 +55,6 @@ function ReserveForm() {
             }, 5000);
           } else if (data.success === true) {
             // Clear all inputs
-            setName('');
-            setEmail('');
-            setPassword('');
-            setPhoto('');
-            setUsername('');
             // show success message to the user
             const body = document.querySelector('#root');
             const apiSuccess = document.createElement('div');
@@ -111,73 +88,73 @@ function ReserveForm() {
   };
   return (
     <form className="sign-up-form" onSubmit={submitHandeller}>
-        <label htmlFor="title">
-          title
-          <input
-            type="text"
-            name="title"
-            onChange={(e) => {
-              setTitle(e.target.value);
-            }}
-          />
-        </label>
+      <label htmlFor="title">
+        title
+        <input
+          type="text"
+          name="title"
+          onChange={(e) => {
+            setTitle(e.target.value);
+          }}
+        />
+      </label>
 
-        <label htmlFor="reservstion">
-          reservation date
-          <input
-            type="text"
-            name="reservstion"
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          />
-        </label>
-        <label htmlFor="phonenumber">
-          phonenumber
-          <input
-            type="number"
-            name="phonenumber"
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          />
-        </label>
+      <label htmlFor="reservation">
+        reservation date
+        <input
+          type="text"
+          name="reservation"
+          onChange={(e) => {
+            setreservation(e.target.value);
+          }}
+        />
+      </label>
+      <label htmlFor="phonenumber">
+        phonenumber
+        <input
+          type="number"
+          name="phonenumber"
+          onChange={(e) => {
+            setPhonenumber(e.target.value);
+          }}
+        />
+      </label>
 
-        <label htmlFor="purpose">
-          purpose
-          <input
-            type="text"
-            name="purpose"
-            onChange={(e) => {
-              setPhoto(e.target.value);
-            }}
-          />
-        </label>
+      <label htmlFor="purpose">
+        purpose
+        <input
+          type="text"
+          name="purpose"
+          onChange={(e) => {
+            setPurpose(e.target.value);
+          }}
+        />
+      </label>
 
-        <label htmlFor="location">
-          location
-          <input
-            type="text"
-            name="location"
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
-          />
-        </label>
-        <label htmlFor="doctor's name">
-          doctor's name
-          <input
-            type="text"
-            name="doctor's name"
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
-          />
-        </label>
-        <button type="submit">
-          Sign up
-        </button>
-      </form>
+      <label htmlFor="location">
+        location
+        <input
+          type="text"
+          name="location"
+          onChange={(e) => {
+            setLocation(e.target.value);
+          }}
+        />
+      </label>
+      <label htmlFor="doctor's name">
+        Doctor&apos;s name
+        <input
+          type="text"
+          name="doctor's name"
+          onChange={(e) => {
+            setDoctorsname(e.target.value);
+          }}
+        />
+      </label>
+      <button type="submit">
+        Sign up
+      </button>
+    </form>
   );
 }
 

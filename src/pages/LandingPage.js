@@ -22,7 +22,10 @@ function LandingPage() {
 
   return (
     <div className="doctors-container">
-      <h1>Welcome, {username}</h1>
+      <h1>
+        Welcome,
+        {username}
+      </h1>
       { doctor.map((doctor) => (
         <NavLink to={`/${doctor.name}`} key={doctor.id}>
           <section className="doctor-section">
