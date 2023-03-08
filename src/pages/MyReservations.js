@@ -22,7 +22,7 @@ function MyReservations() {
 
   return (
     <div className="reservations-container">
-     {mappedReservations && mappedReservations.map((reservation) => (
+      {mappedReservations && mappedReservations.map((reservation) => (
         <section className="reservations-section" key={reservation.id}>
           <div className="reservation-header">
             <h1>
