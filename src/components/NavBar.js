@@ -15,6 +15,7 @@ function NavBar() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const username = searchParams.get('username');
+  const encodedUsername = encodeURIComponent(username);
 
   const filteredUser = user.filter((user) => user.username
     .toLowerCase().match(username.toLowerCase()));
@@ -39,8 +40,6 @@ function NavBar() {
       doctor.classList.remove('open');
     }
   };
-
-  const encodedUsername = encodeURIComponent(username);
 
   return (
     <div className="nav-bar-container">

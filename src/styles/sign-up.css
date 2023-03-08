@@ -1,4 +1,5 @@
-.sign-up-form {
+.sign-up-form,
+.reservations-form {
   display: grid;
   place-items: center;
   padding: 15vh 0;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 
 function ReserveForm() {
   const [title, setTitle] = useState('');
@@ -6,31 +7,62 @@ function ReserveForm() {
   const [phonenumber, setPhonenumber] = useState('e.g. 1234567890');
   const [purpose, setPurpose] = useState('');
   const [location, setLocation] = useState('');
-  const [doctorsname, setDoctorsname] = useState('');
+  const [doctorsName, setDoctorsname] = useState('');
+  const webLocation = useLocation();
+  const searchParams = new URLSearchParams(webLocation.search);
+  const username = searchParams.get('username');
+  const encodedUsername = encodeURIComponent(username);
+  const form = document.querySelector('.reservations-form');
+
+  function handleChange(event) {
+    const selectedDoctor = event.target.value;
+    setDoctorsname(selectedDoctor);
+  }
 
   const submitHandeller = (e) => {
     e.preventDefault();
     const data = {
-      user: {
-        title,
-        reservation,
-        phonenumber,
-        purpose,
-        location,
-        doctorsname,
-      },
+      title,
+      reservation_date: reservation,
+      phone_number: phonenumber,
+      purpose,
+      location,
+      doctor_name: doctorsName,
+      username,
     };
-    if (data.user.name === '') {
-      // Show error message
-    } else if (data.user.email === '' || !data.user.email.includes('@')) {
-      // show error message
-    } else if (data.user.password.length < 6) {
-      // show error message
-
-    } else if ((data.user.username === '') || (data.user.username.length < 5)) {
-      // show error message
+    if (data.title === '') {
+      const errorEl = document.createElement('p');
+      errorEl.innerHTML = 'Please enter a title.';
+      errorEl.classList.add('error');
+      form.appendChild(errorEl);
+    } else if (data.reservation_date === '') {
+      const errorEl = document.createElement('p');
+      errorEl.innerHTML = 'Please enter a reservation date.';
+      errorEl.classList.add('error');
+      form.appendChild(errorEl);
+    } else if (data.phone_number.length < 8) {
+      const errorEl = document.createElement('p');
+      errorEl.innerHTML = 'Please enter a valid phone number.';
+      errorEl.classList.add('error');
+      form.appendChild(errorEl);
+    } else if (data.purpose === '') {
+      const errorEl = document.createElement('p');
+      errorEl.innerHTML = 'Please enter a purpose.';
+      errorEl.classList.add('error');
+      form.appendChild(errorEl);
+    } else if (data.location === '') {
+      const errorEl = document.createElement('p');
+      errorEl.innerHTML = 'Please enter a location.';
+      errorEl.classList.add('error');
+      form.appendChild(errorEl);
+    } else if (data.doctor_name === '') {
+      const errorEl = document.createElement('p');
+      errorEl.innerHTML = 'Please enter a doctor name.';
+      errorEl.classList.add('error');
+      form.appendChild(errorEl);
     } else {
       const url = 'http://localhost:3000/api/reservations';
+      console.log(data);
       const options = {
         method: 'POST',
         headers: {
@@ -43,9 +75,6 @@ function ReserveForm() {
       fetch(url, options)
         .then((res) => res.json())
         .then((data) => {
-          // eslint-disable-next-line
-          console.error(data);
-          const form = document.querySelector('.sign-up-form');
           if (data.success === false) {
             const apiError = document.createElement('div');
             apiError.innerHTML = data.errors;
@@ -63,8 +92,8 @@ function ReserveForm() {
             setTimeout(() => {
               apiSuccess.remove();
             }, 10000);
-            // redirect to a new page
-            window.location.href = '/logInPage';
+            // refresh
+            window.location.reload();
           } else {
             // handle other cases
             const apiOtherError = document.createElement('div');
@@ -87,74 +116,79 @@ function ReserveForm() {
     }
   };
   return (
-    <form className="sign-up-form" onSubmit={submitHandeller}>
-      <label htmlFor="title">
-        title
-        <input
-          type="text"
-          name="title"
-          onChange={(e) => {
-            setTitle(e.target.value);
-          }}
-        />
-      </label>
+    <div>
+      <NavLink to={`/landingPage?username=${encodedUsername}`}>
+        <button type="button">
+          Back
+        </button>
+      </NavLink>
+      <form className="reservations-form" onSubmit={submitHandeller}>
+        <label htmlFor="title">
+          title
+          <input
+            type="text"
+            name="title"
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
+          />
+        </label>
 
-      <label htmlFor="reservation">
-        reservation date
-        <input
-          type="text"
-          name="reservation"
-          onChange={(e) => {
-            setreservation(e.target.value);
-          }}
-        />
-      </label>
-      <label htmlFor="phonenumber">
-        phonenumber
-        <input
-          type="number"
-          name="phonenumber"
-          onChange={(e) => {
-            setPhonenumber(e.target.value);
-          }}
-        />
-      </label>
+        <label htmlFor="reservation">
+          reservation date
+          <input
+            type="text"
+            name="reservation"
+            onChange={(e) => {
+              setreservation(e.target.value);
+            }}
+          />
+        </label>
+        <label htmlFor="phonenumber">
+          phonenumber
+          <input
+            type="number"
+            name="phonenumber"
+            onChange={(e) => {
+              setPhonenumber(e.target.value);
+            }}
+          />
+        </label>
 
-      <label htmlFor="purpose">
-        purpose
-        <input
-          type="text"
-          name="purpose"
-          onChange={(e) => {
-            setPurpose(e.target.value);
-          }}
-        />
-      </label>
+        <label htmlFor="purpose">
+          purpose
+          <input
+            type="text"
+            name="purpose"
+            onChange={(e) => {
+              setPurpose(e.target.value);
+            }}
+          />
+        </label>
 
-      <label htmlFor="location">
-        location
-        <input
-          type="text"
-          name="location"
-          onChange={(e) => {
-            setLocation(e.target.value);
-          }}
-        />
-      </label>
-      <label htmlFor="doctor's name">
-        Doctor&apos;s name
-        <input
-          type="text"
-          name="doctor's name"
-          onChange={(e) => {
-            setDoctorsname(e.target.value);
-          }}
-        />
-      </label>
-      <button type="submit">
-        Sign up
-      </button>
-    </form>
+        <label htmlFor="location">
+          location
+          <input
+            type="text"
+            name="location"
+            onChange={(e) => {
+              setLocation(e.target.value);
+            }}
+          />
+        </label>
+        <select onChange={handleChange}>
+          <option value="">Choose A Doctor</option>
+          <option value="Doctor Kelvin Ben">Doctor Kelvin Ben</option>
+          <option value="Doctor Abdullah Nganje">Doctor Abdullah Nganje</option>
+          <option value="Doctor Mohammed El-Deeb">Doctor Mohammed El-Deeb</option>
+          <option value="Doctor Abubakar Ummar">Doctor Abubakar Ummar</option>
+        </select>
+
+        <button type="submit">
+          Sign up
+        </button>
+      </form>
+    </div>
   );
 }
 

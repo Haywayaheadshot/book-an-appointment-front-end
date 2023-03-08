@@ -13,7 +13,7 @@ import Details from './Details';
 
 function Main() {
   const location = useLocation();
-  const showNavBar = ['/reservationForm', '/landingPage', '/reservationForm'].includes(location.pathname);
+  const showNavBar = ['/reservationForm', '/landingPage', '/reservationForm', '/reservations'].includes(location.pathname);
 
   return (
     <>

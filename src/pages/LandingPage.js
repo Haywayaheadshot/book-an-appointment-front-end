@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { getDoctors } from '../redux/landingPage/LandingPage';
 import '../styles/landing-page.css';
+import Details from './Details';
 
 function LandingPage() {
   const doctor = useSelector((state) => state.doctors);
@@ -11,6 +12,9 @@ function LandingPage() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const username = searchParams.get('username');
+  const [showModal, setShowModal] = useState(false);
+  const [selectedDoctor, setSelectedDoctor] = useState(null);
+  const body = document.getElementById('body');
 
   useEffect(() => {
     dispatch(getDoctors());
@@ -20,6 +24,17 @@ function LandingPage() {
     navigate('/');
   }
 
+  const handleShowDetails = (doctor) => {
+    setSelectedDoctor(doctor);
+    setShowModal(true);
+    body.classList.add('open');
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    body.classList.remove('open');
+  };
+
   return (
     <div className="doctors-container">
       <h1>
@@ -27,7 +42,7 @@ function LandingPage() {
         {username}
       </h1>
       { doctor.map((doctor) => (
-        <NavLink to={`/${doctor.name}`} key={doctor.id}>
+        <button type="button" onClick={() => handleShowDetails(doctor)} key={doctor.name}>
           <section className="doctor-section">
             <img src={doctor.photo} alt="Portrait Of Doc" className="doctors-image" />
             <h1>
@@ -49,8 +64,15 @@ function LandingPage() {
               </h4>
             </div>
           </section>
-        </NavLink>
+        </button>
       ))}
+      { showModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <Details doctor={selectedDoctor} closeModal={handleCloseModal} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
