@@ -41,7 +41,7 @@ function LandingPage() {
         Welcome,
         {username}
       </h1>
-      { doctor.map((doctor) => (
+      {doctor && doctor.map((doctor) => (
         <button type="button" onClick={() => handleShowDetails(doctor)} key={doctor.name}>
           <section className="doctor-section">
             <img src={doctor.photo} alt="Portrait Of Doc" className="doctors-image" />
