@@ -22,17 +22,20 @@ function NavBar() {
   }, [dispatch, encodedUsername]);
 
   useEffect(() => {
-    getUserByUsername();
     const body = document.getElementById('body');
     const doctor = document.querySelector('.doctors-container');
     if (open) {
       body.classList.add('open');
-      doctor.classList.add('open');
+      if (location.pathname === '/landingPage') {
+        doctor.classList.add('open');
+      }
     } else {
       body.classList.remove('open');
-      doctor.classList.remove('open');
+      if (location.pathname === '/landingPage') {
+        doctor.classList.remove('open');
+      }
     }
-  }, [open]);
+  }, [open, location.pathname]);
 
   return (
     <div className="nav-bar-container">
