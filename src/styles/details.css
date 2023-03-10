@@ -1,0 +1,18 @@
+.details-sec {
+  padding: 10px 20px;
+}
+
+.doc-details-pic {
+  max-width: 50vw;
+}
+
+.details-age-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.details-age-span {
+  padding: 0 5px;
+}

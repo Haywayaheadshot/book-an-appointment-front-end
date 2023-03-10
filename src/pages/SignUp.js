@@ -63,8 +63,6 @@ function SignUp() {
       fetch(url, options)
         .then((res) => res.json())
         .then((data) => {
-          // eslint-disable-next-line
-          console.error(data);
           const form = document.querySelector('.sign-up-form');
           if (data.success === false) {
             const apiError = document.createElement('div');

@@ -1,0 +1,22 @@
+.nav-bar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10px;
+  border-bottom: 1px solid #000;
+  box-shadow: 0 0 5px #000;
+}
+
+.hamburger-pop-ul {
+  position: fixed;
+  top: 10vh;
+  right: 0;
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}

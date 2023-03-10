@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 function LogIn() {
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
+  const [loginError, setLoginError] = useState('');
+
+  const navigate = useNavigate();
 
   const submitHandeller = (e) => {
     e.preventDefault();
@@ -14,17 +17,9 @@ function LogIn() {
       },
     };
     if (data.user.username === '') {
-      // Show error message
-      // nameErrorMessage.style.display = 'block';
-      // emailErrorMessage.style.display = 'none';
-      // passErrorMessage.style.display = 'none';
-      // userErrorMessage.style.display = 'none';
+      setLoginError('Username cannot be empty!');
     } else if (data.user.password.length < 6) {
-      // show error message
-      // nameErrorMessage.style.display = 'none';
-      // emailErrorMessage.style.display = 'none';
-      // passErrorMessage.style.display = 'block';
-      // userErrorMessage.style.display = 'none';
+      setLoginError('Password must be 6 characters or more. Please check again!');
     } else {
       const url = 'http://localhost:3000/api/login';
       const options = {
@@ -39,48 +34,20 @@ function LogIn() {
       fetch(url, options)
         .then((res) => res.json())
         .then((data) => {
-          // eslint-disable-next-line
-          console.error(data);
           const form = document.querySelector('.sign-up-form');
-          if (data.status === 401) {
-            const apiError = document.createElement('div');
-            apiError.innerHTML = data.errors;
-            form.appendChild(apiError);
-            setTimeout(() => {
-              apiError.remove();
-            }, 5000);
-          } else if (data.status === 200) {
-            // Clear all inputs
-            setPassword('');
-            setUsername('');
-            // show success message to the user
-            const body = document.querySelector('#root');
-            const apiSuccess = document.createElement('div');
-            apiSuccess.innerHTML = '<h4>Log in succesfully</h4>';
-            body.appendChild(apiSuccess);
-            setTimeout(() => {
-              apiSuccess.remove();
-            }, 10000);
-            // redirect to a new page
-            // window.location.href = '/logInPage';
+          if (data.message === 'success') {
+            // redirect to user page
+            const encodedUsername = encodeURIComponent(username);
+            navigate(`/landingPage?username=${encodedUsername}`);
           } else {
             // handle other cases
             const apiOtherError = document.createElement('div');
-            apiOtherError.innerHTML = `
-              <h4>
-                There seem to be a problem with the server. Please try again later!
-              </h4>
-            `;
+            apiOtherError.innerHTML = data.error;
             form.appendChild(apiOtherError);
             setTimeout(() => {
               apiOtherError.remove();
             }, 5000);
           }
-        })
-        .catch((error) => {
-          // eslint-disable-next-line
-          console.error(error);
-          // show error message to the user
         });
     }
   };
@@ -112,11 +79,18 @@ function LogIn() {
             }}
           />
         </label>
-
+        {loginError && <h4>{loginError}</h4>}
         <button type="submit">
           Login
         </button>
       </form>
+      <section>
+        <NavLink to="/">
+          <button type="button">
+            Sign Up
+          </button>
+        </NavLink>
+      </section>
     </div>
   );
 }
