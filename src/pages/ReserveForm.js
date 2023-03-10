@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import doc from '../assets/doc_img.jpg';
 
 function ReserveForm() {
   const [title, setTitle] = useState('');
@@ -116,78 +117,117 @@ function ReserveForm() {
     }
   };
   return (
-    <div>
+    <div style={{
+      backgroundImage: `url(${doc})`,
+      backgroundPosition: 'center',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+    }}
+    >
       <NavLink to={`/landingPage?username=${encodedUsername}`}>
-        <button type="button">
+        <button
+          className="mt-5 text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-32 sm:w-32 px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+          type="button"
+        >
           Back
         </button>
       </NavLink>
-      <form className="reservations-form" onSubmit={submitHandeller}>
-        <label htmlFor="title">
-          title
-          <input
-            type="text"
-            name="title"
-            onChange={(e) => {
-              setTitle(e.target.value);
-            }}
-          />
-        </label>
+      <div className="container my-5 flex justify-center items-center flex-col gap-16 w-screen">
+        <form
+          className="border-black border-2 rounded-lg p-20 flex flex-col w-1/2 gap-5 shadow-2xl"
+          onSubmit={submitHandeller}
+        >
+          <label
+            className=" mb-2 text-sm font-medium text-gray-900 rounded-lg flex flex-col"
+            htmlFor="title"
+          >
+            title
+            <input
+              type="text"
+              className=" mb-2 text-sm font-medium text-gray-900 rounded-lg flex flex-col"
+              name="title"
+              onChange={(e) => {
+                setTitle(e.target.value);
+              }}
+            />
+          </label>
 
-        <label htmlFor="reservation">
-          reservation date
-          <input
-            type="text"
-            name="reservation"
-            onChange={(e) => {
-              setreservation(e.target.value);
-            }}
-          />
-        </label>
-        <label htmlFor="phonenumber">
-          phonenumber
-          <input
-            type="number"
-            name="phonenumber"
-            onChange={(e) => {
-              setPhonenumber(e.target.value);
-            }}
-          />
-        </label>
+          <label
+            className=" mb-2 text-sm font-medium text-gray-900 rounded-lg flex flex-col"
+            htmlFor="reservation"
+          >
+            reservation date
+            <input
+              type="text"
+              className=" mb-2 text-sm font-medium text-gray-900 rounded-lg flex flex-col"
+              name="reservation"
+              onChange={(e) => {
+                setreservation(e.target.value);
+              }}
+            />
+          </label>
+          <label
+            className=" mb-2 text-sm font-medium text-gray-900 rounded-lg flex flex-col"
+            htmlFor="phonenumber"
+          >
+            phonenumber
+            <input
+              type="number"
+              name="phonenumber"
+              onChange={(e) => {
+                setPhonenumber(e.target.value);
+              }}
+            />
+          </label>
 
-        <label htmlFor="purpose">
-          purpose
-          <input
-            type="text"
-            name="purpose"
-            onChange={(e) => {
-              setPurpose(e.target.value);
-            }}
-          />
-        </label>
+          <label
+            className=" mb-2 text-sm font-medium text-gray-900 rounded-lg flex flex-col"
+            htmlFor="purpose"
+          >
+            purpose
+            <input
+              type="text"
+              className=" mb-2 text-sm font-medium text-gray-900 rounded-lg flex flex-col"
+              name="purpose"
+              onChange={(e) => {
+                setPurpose(e.target.value);
+              }}
+            />
+          </label>
 
-        <label htmlFor="location">
-          location
-          <input
-            type="text"
-            name="location"
-            onChange={(e) => {
-              setLocation(e.target.value);
-            }}
-          />
-        </label>
-        <select onChange={handleChange}>
-          <option value="">Choose A Doctor</option>
-          <option value="Doctor Kelvin Ben">Doctor Kelvin Ben</option>
-          <option value="Doctor Abdullah Nganje">Doctor Abdullah Nganje</option>
-          <option value="Doctor Mohammed El-Deeb">Doctor Mohammed El-Deeb</option>
-          <option value="Doctor Abubakar Ummar">Doctor Abubakar Ummar</option>
-        </select>
+          <label
+            className=" mb-2 text-sm font-medium text-gray-900 rounded-lg flex flex-col"
+            htmlFor="location"
+          >
+            location
+            <input
+              type="text"
+              className=" mb-2 text-sm font-medium text-gray-900 rounded-lg flex flex-col"
+              name="location"
+              onChange={(e) => {
+                setLocation(e.target.value);
+              }}
+            />
+          </label>
+          <select onChange={handleChange}>
+            <option value="">Choose A Doctor</option>
+            <option value="Doctor Kelvin Ben">Doctor Kelvin Ben</option>
+            <option value="Doctor Abdullah Nganje">Doctor Abdullah Nganje</option>
+            <option value="Doctor Mohammed El-Deeb">
+              Doctor Mohammed El-Deeb
+            </option>
+            <option value="Doctor Abubakar Ummar">Doctor Abubakar Ummar</option>
+          </select>
 
-        <button type="submit">
-          Sign up
-        </button>
-      </form>
+          <button
+            className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-32 sm:w-32 px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+            type="submit"
+          >
+            Sign up
+          </button>
+        </form>
+      </div>
+
     </div>
   );
 }

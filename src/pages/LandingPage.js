@@ -36,32 +36,36 @@ function LandingPage() {
   };
 
   return (
-    <div className="doctors-container">
-      <h1>
+    <div className="doctors-container flex flex-col mx-28 gap-10 pl-48">
+      <h1 className="">
         Welcome,
-        {username}
+        <span className="text-2xl">
+          {username}
+        </span>
       </h1>
       {doctor && doctor.map((doctor) => (
         <button type="button" onClick={() => handleShowDetails(doctor)} key={doctor.name}>
-          <section className="doctor-section">
-            <img src={doctor.photo} alt="Portrait Of Doc" className="doctors-image" />
-            <h1>
+          <section className="doctor-section flex bg-[#CBE4DE] p-14 justify-between rounded-xl">
+            <img src={doctor.photo} alt="Portrait Of Doc" className="doctors-image w-1/3 rounded-xl" />
+            <h1 className="text-2xl">
               {doctor.name}
             </h1>
-            <h2>
-              {doctor.specialty}
-            </h2>
-            <div className="doctor-age-xperience-div">
-              <h4>
-                Age:
-                <span className="age-xperience-span">{doctor.age}</span>
-                years
-              </h4>
-              <h4>
-                Experience:
-                <span className="age-xperience-span">{doctor.years_of_experience}</span>
-                years
-              </h4>
+            <div>
+              <h2 className="text-3xl pb-16">
+                {doctor.specialty}
+              </h2>
+              <div className="doctor-age-xperience-div text-2xl">
+                <h4>
+                  Age:
+                  <span className="age-xperience-span mr-16">{doctor.age}</span>
+                  years
+                </h4>
+                <h4>
+                  Experience:
+                  <span className="age-xperience-span mr-16">{doctor.years_of_experience}</span>
+                  years
+                </h4>
+              </div>
             </div>
           </section>
         </button>

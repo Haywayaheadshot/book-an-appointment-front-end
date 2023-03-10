@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import '../styles/sign-up.css';
+import doc from '../assets/doc_img.jpg';
 
 function SignUp() {
   const [name, setName] = useState('');
@@ -43,7 +43,7 @@ function SignUp() {
       emailErrorMessage.style.display = 'none';
       passErrorMessage.style.display = 'block';
       userErrorMessage.style.display = 'none';
-    } else if ((data.user.username === '') || (data.user.username.length < 5)) {
+    } else if (data.user.username === '' || data.user.username.length < 5) {
       // show error message
       nameErrorMessage.style.display = 'none';
       emailErrorMessage.style.display = 'none';
@@ -111,38 +111,57 @@ function SignUp() {
   };
 
   return (
-    <div>
-      <form className="sign-up-form" onSubmit={submitHandeller}>
-        <label htmlFor="name">
+    <div
+      className="m-0 flex justify-center items-center flex-col gap-10 w-screen h-screen"
+      style={{
+        backgroundImage: `url(${doc})`,
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      <form
+        className="border-black border-2 rounded-lg p-20 flex flex-col w-1/2 gap-5 shadow-2xl"
+        onSubmit={submitHandeller}
+      >
+        <label
+          className="block mb-2 text-sm font-medium text-gray-900"
+          htmlFor="name"
+        >
           Name
           <input
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
             type="text"
             name="name"
             onChange={(e) => {
               setName(e.target.value);
             }}
           />
-          <h2 className="sign-up-name-error">
-            Please input your name!
-          </h2>
+          <h2 className="sign-up-name-error">Please input your name!</h2>
         </label>
 
-        <label htmlFor="email">
+        <label
+          className="block mb-2 text-sm font-medium text-gray-900"
+          htmlFor="email"
+        >
           Email
           <input
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
             type="email"
             name="email"
             onChange={(e) => {
               setEmail(e.target.value);
             }}
           />
-          <h2 className="sign-up-email-error">
-            Please input a correct email!
-          </h2>
+          <h2 className="sign-up-email-error">Please input a correct email!</h2>
         </label>
-        <label htmlFor="password">
+        <label
+          className="block mb-2 text-sm font-medium text-gray-900"
+          htmlFor="password"
+        >
           Password
           <input
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
             type="password"
             name="password"
             onChange={(e) => {
@@ -154,9 +173,13 @@ function SignUp() {
           </h2>
         </label>
 
-        <label htmlFor="photo">
+        <label
+          className="block mb-2 text-sm font-medium text-gray-900"
+          htmlFor="photo"
+        >
           Photo
           <input
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
             type="file"
             name="photo"
             onChange={(e) => {
@@ -165,9 +188,13 @@ function SignUp() {
           />
         </label>
 
-        <label htmlFor="username">
+        <label
+          className="block mb-2 text-sm font-medium text-gray-900"
+          htmlFor="username"
+        >
           Username
           <input
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
             type="text"
             name="username"
             onChange={(e) => {
@@ -178,16 +205,20 @@ function SignUp() {
             Please use a Username that has atleast 5 characters!
           </h2>
         </label>
-        <button type="submit">
+        <button
+          type="submit"
+          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-32 sm:w-32 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
           Sign up
         </button>
       </form>
       <section>
-        <h3>
-          Already have an account?
-        </h3>
+        <h3>Already have an account?</h3>
         <NavLink to="./logInPage">
-          <button type="button">
+          <button
+            type="button"
+            className="mt-5 text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-32 sm:w-32 px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+          >
             Login
           </button>
         </NavLink>
