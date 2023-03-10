@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { IconContext } from 'react-icons';
 import '../styles/nav-bar.css';
 import { GiStethoscope } from 'react-icons/gi';
 import Hamburger from 'hamburger-react';
@@ -38,10 +39,15 @@ function NavBar() {
   }, [open, location.pathname]);
 
   return (
-    <div className="nav-bar-container">
-      <GiStethoscope size="5em" />
+    <div className="flex flex-col fixed h-screen justify-center items-center gap-16 w-48 bg-[#2E4F4F]">
+      <IconContext.Provider value={{ size: '5em', className: 'global-class-name', color: 'hsl(0, 0%, 100%)' }}>
+
+        <GiStethoscope />
+      </IconContext.Provider>
       <h1>Book A Doc</h1>
-      <Hamburger toggled={open} toggle={setOpen} />
+      <div className="lg:hidden">
+        <Hamburger toggled={open} toggle={setOpen} />
+      </div>
       {open && (
         <ul className="hamburger-pop-ul">
           {user && (
@@ -72,16 +78,6 @@ function NavBar() {
             </NavLink>
           </li>
           <li>
-            <button type="button" onClick={() => setOpen(false)}>
-              Add Doc
-            </button>
-          </li>
-          <li>
-            <button type="button" onClick={() => setOpen(false)}>
-              Delete Doc
-            </button>
-          </li>
-          <li>
             <NavLink to="/logInPage">
               <button type="button" onClick={() => setOpen(false)}>
                 Log Out
@@ -90,6 +86,29 @@ function NavBar() {
           </li>
         </ul>
       )}
+      <ul className="text-[#CBE4DE] flex flex-col gap-10">
+        <li>
+          <NavLink className="bg-[#2C3333] p-3 rounded-lg hover:bg-[#0E8388] hover:text-white" to={`/reservationForm?username=${encodedUsername}`}>
+            <button type="button" onClick={() => setOpen(false)}>
+              Reserve A Doc
+            </button>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className="bg-[#2C3333] p-3 rounded-lg hover:bg-[#0E8388] hover:text-white" to={`/reservations?username=${encodedUsername}`}>
+            <button type="button" onClick={() => setOpen(false)}>
+              My Reservations
+            </button>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className="bg-[#2C3333] p-3 rounded-lg hover:bg-[#0E8388] hover:text-white" to="/logInPage">
+            <button type="button" onClick={() => setOpen(false)}>
+              Log Out
+            </button>
+          </NavLink>
+        </li>
+      </ul>
     </div>
   );
 }
