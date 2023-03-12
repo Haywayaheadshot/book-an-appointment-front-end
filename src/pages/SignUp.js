@@ -63,6 +63,7 @@ function SignUp() {
       fetch(url, options)
         .then((res) => res.json())
         .then((data) => {
+          console.log(data);
           const form = document.querySelector('.sign-up-form');
           if (data.success === false) {
             const apiError = document.createElement('div');
@@ -121,7 +122,7 @@ function SignUp() {
       }}
     >
       <form
-        className="border-black border-2 rounded-lg p-20 flex flex-col w-1/2 gap-5 shadow-2xl"
+        className="border-black border-2 rounded-lg md:p-20 p-10 flex flex-col md:w-1/2 w-fill px-5 gap-5 shadow-2xl"
         onSubmit={submitHandeller}
       >
         <label

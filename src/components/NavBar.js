@@ -39,13 +39,13 @@ function NavBar() {
   }, [open, location.pathname]);
 
   return (
-    <div className="flex flex-col fixed h-screen justify-center items-center gap-16 w-48 bg-[#2E4F4F]">
+    <div className="flex md:flex-col fixed md:h-screen justify-center items-center gap-16 md:w-48 w-screen h-28 bg-[#2E4F4F]">
       <IconContext.Provider value={{ size: '5em', className: 'global-class-name', color: 'hsl(0, 0%, 100%)' }}>
 
         <GiStethoscope />
       </IconContext.Provider>
       <h1>Book A Doc</h1>
-      <div className="lg:hidden">
+      <div className="md:hidden">
         <Hamburger toggled={open} toggle={setOpen} />
       </div>
       {open && (
@@ -86,7 +86,7 @@ function NavBar() {
           </li>
         </ul>
       )}
-      <ul className="text-[#CBE4DE] flex flex-col gap-10">
+      <ul className="text-[#CBE4DE] hidden flex-col gap-10 md:flex">
         <li>
           <NavLink className="bg-[#2C3333] p-3 rounded-lg hover:bg-[#0E8388] hover:text-white" to={`/reservationForm?username=${encodedUsername}`}>
             <button type="button" onClick={() => setOpen(false)}>

@@ -36,8 +36,8 @@ function LandingPage() {
   };
 
   return (
-    <div className="doctors-container flex flex-col mx-28 gap-10 pl-48">
-      <h1 className="">
+    <div className="flex flex-col md:mx-28 md:gap-10 gap-5 md:pl-48 px-5">
+      <h1 className="mt-20">
         Welcome,
         <span className="text-2xl">
           {username}
@@ -45,9 +45,9 @@ function LandingPage() {
       </h1>
       {doctor && doctor.map((doctor) => (
         <button type="button" onClick={() => handleShowDetails(doctor)} key={doctor.name}>
-          <section className="doctor-section flex bg-[#CBE4DE] p-14 justify-between rounded-xl">
-            <img src={doctor.photo} alt="Portrait Of Doc" className="doctors-image w-1/3 rounded-xl" />
-            <h1 className="text-2xl">
+          <section className="doctor-section flex flex-col items-center gap-5 lg:flex-row bg-[#CBE4DE] p-14 rounded-xl">
+            <img src={doctor.photo} alt="Portrait Of Doc" className="w-1/2 rounded-xl" />
+            <h1 className="text-xl">
               {doctor.name}
             </h1>
             <div>
