@@ -71,7 +71,19 @@ function LandingPage() {
         </button>
       ))}
       { showModal && (
-        <div className="modal">
+        <div style={{
+          position: 'fixed',
+          top: '15vh',
+          backgroundColor: '#fff',
+          height: '70vh',
+          placeSelf: 'center',
+          overflowY: 'scroll',
+          scrollPadding: '24px',
+          scrollSnapType: 'y mandatory',
+          border: '1px solid #000',
+          padding: '20px',
+        }}
+        >
           <div className="modal-content">
             <Details doctor={selectedDoctor} closeModal={handleCloseModal} />
           </div>
