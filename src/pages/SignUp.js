@@ -63,7 +63,6 @@ function SignUp() {
       fetch(url, options)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           const form = document.querySelector('.sign-up-form');
           if (data.success === false) {
             const apiError = document.createElement('div');
@@ -91,7 +90,6 @@ function SignUp() {
             window.location.href = '/logInPage';
           } else {
             // handle other cases
-            console.log(data);
             const apiOtherError = document.createElement('div');
             apiOtherError.innerHTML = `
               <h4>
