@@ -36,7 +36,7 @@ function LandingPage() {
   };
 
   return (
-    <div className="flex flex-col md:mx-28 md:gap-10 gap-5 md:pl-48 px-5">
+    <div className="doctors-container flex flex-col md:mx-28 md:gap-10 gap-5 md:pl-48 px-5">
       <h1 className="mt-20">
         Welcome,
         <span className="text-2xl">
