@@ -91,6 +91,7 @@ function SignUp() {
             window.location.href = '/logInPage';
           } else {
             // handle other cases
+            console.log(data);
             const apiOtherError = document.createElement('div');
             apiOtherError.innerHTML = `
               <h4>
@@ -122,7 +123,7 @@ function SignUp() {
       }}
     >
       <form
-        className="border-black border-2 rounded-lg md:p-20 p-10 flex flex-col md:w-1/2 w-fill px-5 gap-5 shadow-2xl"
+        className="border-black bg-[#0E8388] bg-opacity-30 border-2 rounded-lg md:p-20 p-10 flex flex-col md:w-1/2 w-fill px-5 gap-5 shadow-2xl"
         onSubmit={submitHandeller}
       >
         <label
