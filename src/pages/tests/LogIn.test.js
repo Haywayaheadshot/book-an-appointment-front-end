@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { createRender } from 'react-dom/test-utils';
 import { MemoryRouter } from 'react-router-dom';
 import LogIn from '../LogIn';
 

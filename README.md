@@ -27,7 +27,7 @@
 # 📖 [Book an Appointment] <a name="about-project"></a>
 
 
-**Book an Appointment** is Final Capstone Project based on an app to book an appointment with a doctor.
+**Book an Appointment** is Final Capstone Project based on an app to book an appointment with a doctor. This is the front-end which was connected to [this](https://github.com/Haywayaheadshot/book-an-appointment) back-end repo.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -79,9 +79,8 @@ To get a local copy up and running, follow these steps.
 In order to run this project you need:
 
   - linters.yml and tests.yml files inside the .github folder
-  - .rubocop.yml file
-  - Gemfile 
-  - Install rails and required gems 
+  - .eslintrc.json file
+  - package.json 
 
 
 
@@ -99,13 +98,13 @@ Clone this repository to your desired folder:
 
 Install this project with:
 
-- Run bundle install
+- Run npm install
 
 ### Usage
 
 To run the project, execute the following command:
 
-[$ rails s]
+[$ npm start]
 
 ### Run tests
 
@@ -115,7 +114,7 @@ To run tests, run the following command:
 Example command:
 
 ```sh
-  bin/rails test test/models/article_test.rb
+ npm t
 ```
 -
 

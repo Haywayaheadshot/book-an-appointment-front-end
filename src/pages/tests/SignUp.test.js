@@ -6,7 +6,7 @@ describe('SignUp component', () => {
     const wrapper = shallow(<SignUp />);
     expect(wrapper.find('.sign-up-form')).toHaveLength(1);
   });
-let wrapper;
+  let wrapper;
 
   beforeEach(() => {
     wrapper = shallow(<SignUp />);
@@ -17,7 +17,7 @@ let wrapper;
   });
 
   it('should update the name state when the input value changes', () => {
-    expect(wrapper.find('input[name="name"]').prop('value')).toBe ('John Doe');
+    expect(wrapper.find('input[name="name"]').prop('value')).toBe('John Doe');
   });
 
   it('should update the username state when the input value changes', () => {
