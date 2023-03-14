@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .open {
-  @apply overflow-y-hidden;
+  overflow-y: hidden;
 }

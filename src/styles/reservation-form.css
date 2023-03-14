@@ -1,0 +1,7 @@
+.apiErrorClass {
+    position: fixed ;
+    bottom: 3vh;
+    left: 55vw;
+    color: red;
+    font-size: 30px;
+}

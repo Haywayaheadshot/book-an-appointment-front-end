@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import doc from '../assets/doc_img.jpg';
+import '../styles/sign-up.css';
 
 function SignUp() {
   const [name, setName] = useState('');
@@ -121,7 +122,7 @@ function SignUp() {
       }}
     >
       <form
-        className="border-black bg-[#0E8388] bg-opacity-30 border-2 rounded-lg md:p-20 p-10 flex flex-col md:w-1/2 w-fill px-5 gap-5 shadow-2xl"
+        className="sign-up-form border-black bg-[#0E8388] bg-opacity-30 border-2 rounded-lg md:p-20 p-10 flex flex-col md:w-1/2 w-fill px-5 gap-5 shadow-2xl"
         onSubmit={submitHandeller}
       >
         <label
