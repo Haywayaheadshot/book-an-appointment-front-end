@@ -28,19 +28,10 @@ function SignUp() {
     };
     if (data.user.name === '') {
       // Show error message
-      // nameErrorMessage.style.display = 'block';
-      // emailErrorMessage.style.display = 'none';
-      // passErrorMessage.style.display = 'none';
-      // userErrorMessage.style.display = 'none';
-      const form = document.querySelector('#sign-up-div');
-      const nameErrorMessage = document.createElement('p');
-      nameErrorMessage.innerHTML = `
-        <h2 className="sign-up-name-error">Please input your name!</h2>
-      `;
-      form.appendChild(nameErrorMessage);
-      setTimeout(() => {
-        nameErrorMessage.remove();
-      }, 1000);
+      nameErrorMessage.style.display = 'block';
+      emailErrorMessage.style.display = 'none';
+      passErrorMessage.style.display = 'none';
+      userErrorMessage.style.display = 'none';
     } else if (data.user.email === '' || !data.user.email.includes('@')) {
       // show error message
       nameErrorMessage.style.display = 'none';
