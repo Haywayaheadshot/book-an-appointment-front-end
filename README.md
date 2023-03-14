@@ -127,27 +127,26 @@ Example command:
 
  👤 **Abubakar Ummar**
 
-- GitHub: [@]()
-- Twitter: [@]()
-- LinkedIn: []()
+- GitHub: [@Haywayaheadshot](https://github.com/Haywayaheadshot)
+- LinkedIn: [@Abubakar Ummar](https://www.linkedin.com/in/abubakar-ummar/)
 
  👤 **Abdul Nganje**
 
-- GitHub: [@]()
-- Twitter: [@]()
-- LinkedIn: []()
+- GitHub: [@Nganje](https://github.com/asnganje)
+- Twitter: [@asnganje](https://twitter.com/asnganje)
+- LinkedIn: [@Nganje](https://www.linkedin.com/in/abdulrahman-nganje-a6436935/)
 
  👤 **Mohamed Eldeeb**
 
-- GitHub: [@]()
-- Twitter: [@]()
-- LinkedIn: []()
+- GitHub: [@Mohammed](https://github.com/eng-mohamed-eldeeb)
+- Twitter: [@El_Deeb](https://twitter.com/eldeeb_3o)
+- LinkedIn: [@Mohammed Eldeeb](https://www.linkedin.com/in/eng-mohamed-eldeeb/)
 
 👤 **Kelvin Benjamin**
 
 - GitHub: [@Kelvin-Ben](https://github.com/Kelvin-Ben)
 - Twitter: [@kevoyout144](https://twitter.com/kevoyout144)
-- LinkedIn: [Kelvin-Ben](https://www.linkedin.com/in/kelvin-ben-323043173/)
+- LinkedIn: [@Kelvin-Ben](https://www.linkedin.com/in/kelvin-ben-323043173/)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
