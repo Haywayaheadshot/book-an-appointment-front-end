@@ -37,7 +37,7 @@ function ReserveForm() {
       errorEl.className = 'apiErrorClass';
       errorEl.innerHTML = 'Please enter a title.';
       errorEl.classList.add('error');
-      body.appendChild(errorEl);
+      document.querySelector('#EM').appendChild(errorEl);
       setTimeout(() => {
         errorEl.remove();
       }, 1000);
@@ -46,7 +46,7 @@ function ReserveForm() {
       errorEl.className = 'apiErrorClass';
       errorEl.innerHTML = 'Please enter a reservation date.';
       errorEl.classList.add('error');
-      body.appendChild(errorEl);
+      document.querySelector('#EM').appendChild(errorEl);
       setTimeout(() => {
         errorEl.remove();
       }, 1000);
@@ -55,7 +55,7 @@ function ReserveForm() {
       errorEl.className = 'apiErrorClass';
       errorEl.innerHTML = 'Please enter a valid phone number. It must be 8 characters';
       errorEl.classList.add('error');
-      body.appendChild(errorEl);
+      document.querySelector('#EM').appendChild(errorEl);
       setTimeout(() => {
         errorEl.remove();
       }, 1000);
@@ -64,7 +64,7 @@ function ReserveForm() {
       errorEl.className = 'apiErrorClass';
       errorEl.innerHTML = 'Please enter a purpose.';
       errorEl.classList.add('error');
-      body.appendChild(errorEl);
+      document.querySelector('#EM').appendChild(errorEl);
       setTimeout(() => {
         errorEl.remove();
       }, 1000);
@@ -73,16 +73,16 @@ function ReserveForm() {
       errorEl.className = 'apiErrorClass';
       errorEl.innerHTML = 'Please enter a location.';
       errorEl.classList.add('error');
-      body.appendChild(errorEl);
+      document.querySelector('#EM').appendChild(errorEl);
       setTimeout(() => {
         errorEl.remove();
       }, 1000);
     } else if (data.doctor_name === '') {
       const errorEl = document.createElement('p');
-      errorEl.className = 'apiErrorClass';
+      errorEl.className = 'apiErrorClass text-red-500';
       errorEl.innerHTML = 'Please enter a doctor name.';
       errorEl.classList.add('error');
-      body.appendChild(errorEl);
+      document.querySelector('#EM').appendChild(errorEl);
       setTimeout(() => {
         errorEl.remove();
       }, 1000);
@@ -244,7 +244,7 @@ function ReserveForm() {
             </option>
             <option value="Doctor Abubakar Ummar">Doctor Abubakar Ummar</option>
           </select>
-
+          <div id="EM" />
           <button
             className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-32 sm:w-32 px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
             type="submit"
