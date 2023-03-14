@@ -9,7 +9,6 @@
 .sign-up-password-error,
 .sign-up-email-error,
 .sign-up-name-error {
-  display: none;
   color: red;
   font-size: 0.8rem;
   font-weight: 500;

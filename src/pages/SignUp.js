@@ -28,10 +28,19 @@ function SignUp() {
     };
     if (data.user.name === '') {
       // Show error message
-      nameErrorMessage.style.display = 'block';
-      emailErrorMessage.style.display = 'none';
-      passErrorMessage.style.display = 'none';
-      userErrorMessage.style.display = 'none';
+      // nameErrorMessage.style.display = 'block';
+      // emailErrorMessage.style.display = 'none';
+      // passErrorMessage.style.display = 'none';
+      // userErrorMessage.style.display = 'none';
+      const form = document.querySelector('#sign-up-div');
+      const nameErrorMessage = document.createElement('p');
+      nameErrorMessage.innerHTML = `
+        <h2 className="sign-up-name-error">Please input your name!</h2>
+      `;
+      form.appendChild(nameErrorMessage);
+      setTimeout(() => {
+        nameErrorMessage.remove();
+      }, 1000);
     } else if (data.user.email === '' || !data.user.email.includes('@')) {
       // show error message
       nameErrorMessage.style.display = 'none';
@@ -113,6 +122,7 @@ function SignUp() {
 
   return (
     <div
+      id="sign-up-div"
       className="m-0 flex justify-center items-center flex-col gap-10 w-screen h-screen"
       style={{
         backgroundImage: `url(${doc})`,
@@ -134,11 +144,11 @@ function SignUp() {
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
             type="text"
             name="name"
+            value={name}
             onChange={(e) => {
               setName(e.target.value);
             }}
           />
-          <h2 className="sign-up-name-error">Please input your name!</h2>
         </label>
 
         <label
@@ -150,6 +160,7 @@ function SignUp() {
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
             type="email"
             name="email"
+            value={email}
             onChange={(e) => {
               setEmail(e.target.value);
             }}
@@ -165,6 +176,7 @@ function SignUp() {
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
             type="password"
             name="password"
+            value={password}
             onChange={(e) => {
               setPassword(e.target.value);
             }}
@@ -198,6 +210,7 @@ function SignUp() {
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
             type="text"
             name="username"
+            value={username}
             onChange={(e) => {
               setUsername(e.target.value);
             }}
