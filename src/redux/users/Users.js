@@ -11,7 +11,6 @@ export const getUserByUsername = createAsyncThunk(
   async (username) => {
     const response = await axios.get(`http://localhost:3000/api/users?username=${username}`);
     const users = response.data;
-    console.log(`${users} from Api`);
     return users;
   },
 );

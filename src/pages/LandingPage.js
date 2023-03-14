@@ -36,43 +36,47 @@ function LandingPage() {
   };
 
   return (
-    <div className="doctors-container flex flex-col mx-28 gap-10 pl-48">
-      <h1 className="">
+    <div className="doctors-container flex flex-col md:mx-28 md:gap-10 gap-5 md:pl-48 px-5">
+      <h1 className="mt-20">
         Welcome,
-        <span className="text-2xl">
+        <span className="lg:text-2xl text-lg">
           {username}
         </span>
       </h1>
-      {doctor && doctor.map((doctor) => (
-        <button type="button" onClick={() => handleShowDetails(doctor)} key={doctor.name}>
-          <section className="doctor-section flex bg-[#CBE4DE] p-14 justify-between rounded-xl">
-            <img src={doctor.photo} alt="Portrait Of Doc" className="doctors-image w-1/3 rounded-xl" />
-            <h1 className="text-2xl">
-              {doctor.name}
-            </h1>
-            <div>
-              <h2 className="text-3xl pb-16">
-                {doctor.specialty}
-              </h2>
-              <div className="doctor-age-xperience-div text-2xl">
-                <h4>
-                  Age:
-                  <span className="age-xperience-span mr-16">{doctor.age}</span>
-                  years
-                </h4>
-                <h4>
-                  Experience:
-                  <span className="age-xperience-span mr-16">{doctor.years_of_experience}</span>
-                  years
-                </h4>
+      <div className="w-full grid gap-4 xl:grid-cols-2">
+        {doctor && doctor.map((doctor) => (
+          <button type="button" onClick={() => handleShowDetails(doctor)} key={doctor.name}>
+            <section className="doctor-section flex flex-col items-center gap-5 lg:flex-row bg-[#CBE4DE] p-10 lg:p-14 rounded-xl overflow-auto">
+              <div className="flex-col justify-center items-center">
+                <img src={doctor.photo} alt="Portrait Of Doc" className="h-40 w-25 rounded-xl mb-5" />
+                <h1 className="lg:text-2xl text-lg font-bold">
+                  {doctor.name}
+                </h1>
               </div>
-            </div>
-          </section>
-        </button>
-      ))}
+              <div>
+                <h2 className="lg:text-3xl text-xl pb-16">
+                  {doctor.specialty}
+                </h2>
+                <div className="doctor-age-xperience-div lg:text-2xl text-lg">
+                  <h4>
+                    Age:
+                    <span className="age-xperience-span mr-16">{doctor.age}</span>
+                    years
+                  </h4>
+                  <h4>
+                    Experience:
+                    <span className="age-xperience-span mr-16">{doctor.years_of_experience}</span>
+                    years
+                  </h4>
+                </div>
+              </div>
+            </section>
+          </button>
+        ))}
+      </div>
       { showModal && (
-        <div className="modal">
-          <div className="modal-content">
+        <div className="fixed inset-0 flex justify-center items-center backdrop-blur">
+          <div className="modal-content flex bg-[#CBE4DE] mx-8 md:mx-12 lg:mx-20 my-12 border rounded-lg px-10 py-12 overflow-auto h-[80%] border-black">
             <Details doctor={selectedDoctor} closeModal={handleCloseModal} />
           </div>
         </div>

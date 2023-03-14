@@ -39,13 +39,13 @@ function NavBar() {
   }, [open, location.pathname]);
 
   return (
-    <div className="flex flex-col fixed h-screen justify-center items-center gap-16 w-48 bg-[#2E4F4F]">
+    <div className="flex md:flex-col fixed md:h-screen justify-center items-center gap-16 md:w-48 w-screen h-28 bg-[#2E4F4F]">
       <IconContext.Provider value={{ size: '5em', className: 'global-class-name', color: 'hsl(0, 0%, 100%)' }}>
 
         <GiStethoscope />
       </IconContext.Provider>
-      <h1>Book A Doc</h1>
-      <div className="lg:hidden">
+      <h1 className="text-white text-xl">Book A Doc</h1>
+      <div className="md:hidden">
         <Hamburger toggled={open} toggle={setOpen} />
       </div>
       {open && (
@@ -57,55 +57,46 @@ function NavBar() {
             </li>
           )}
           <li>
-            <NavLink to={`/landingPage?username=${encodedUsername}`}>
-              <button type="button" onClick={() => setOpen(false)}>
-                Doctors
-              </button>
+            <NavLink onClick={() => setOpen(false)} to={`/landingPage?username=${encodedUsername}`}>
+              Doctors
             </NavLink>
           </li>
           <li>
-            <NavLink to={`/reservationForm?username=${encodedUsername}`}>
-              <button type="button" onClick={() => setOpen(false)}>
-                Reserve A Doc
-              </button>
+            <NavLink onClick={() => setOpen(false)} to={`/reservationForm?username=${encodedUsername}`}>
+              Reserve A Doc
             </NavLink>
           </li>
           <li>
-            <NavLink to={`/reservations?username=${encodedUsername}`}>
-              <button type="button" onClick={() => setOpen(false)}>
-                My Reservations
-              </button>
+            <NavLink onClick={() => setOpen(false)} to={`/reservations?username=${encodedUsername}`}>
+              My Reservations
             </NavLink>
           </li>
           <li>
-            <NavLink to="/logInPage">
-              <button type="button" onClick={() => setOpen(false)}>
-                Log Out
-              </button>
+            <NavLink to="/logInPage" onClick={() => setOpen(false)}>
+              Log Out
             </NavLink>
           </li>
         </ul>
       )}
-      <ul className="text-[#CBE4DE] flex flex-col gap-10">
+      <ul className="text-[#CBE4DE] hidden flex-col gap-10 items-stretch md:flex">
         <li>
-          <NavLink className="bg-[#2C3333] p-3 rounded-lg hover:bg-[#0E8388] hover:text-white" to={`/reservationForm?username=${encodedUsername}`}>
-            <button type="button" onClick={() => setOpen(false)}>
-              Reserve A Doc
-            </button>
+          <NavLink onClick={() => setOpen(false)} className="bg-[#2C3333] w-full p-3 rounded-lg hover:bg-[#0E8388] hover:text-white" to={`/reservationForm?username=${encodedUsername}`}>
+            Reserve A Doc
           </NavLink>
         </li>
         <li>
-          <NavLink className="bg-[#2C3333] p-3 rounded-lg hover:bg-[#0E8388] hover:text-white" to={`/reservations?username=${encodedUsername}`}>
-            <button type="button" onClick={() => setOpen(false)}>
-              My Reservations
-            </button>
+          <NavLink onClick={() => setOpen(false)} className="bg-[#2C3333] p-3 rounded-lg hover:bg-[#0E8388] hover:text-white" to={`/landingPage?username=${encodedUsername}`}>
+            Doctors
           </NavLink>
         </li>
         <li>
-          <NavLink className="bg-[#2C3333] p-3 rounded-lg hover:bg-[#0E8388] hover:text-white" to="/logInPage">
-            <button type="button" onClick={() => setOpen(false)}>
-              Log Out
-            </button>
+          <NavLink onClick={() => setOpen(false)} className="bg-[#2C3333] p-3 rounded-lg hover:bg-[#0E8388] hover:text-white" to={`/reservations?username=${encodedUsername}`}>
+            My Reservations
+          </NavLink>
+        </li>
+        <li>
+          <NavLink onClick={() => setOpen(false)} className="bg-[#2C3333] p-3 rounded-lg hover:bg-[#0E8388] hover:text-white" to="/logInPage">
+            Log Out
           </NavLink>
         </li>
       </ul>

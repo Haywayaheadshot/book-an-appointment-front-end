@@ -63,7 +63,6 @@ function ReserveForm() {
       form.appendChild(errorEl);
     } else {
       const url = 'http://localhost:3000/api/reservations';
-      console.log(data);
       const options = {
         method: 'POST',
         headers: {
@@ -79,10 +78,6 @@ function ReserveForm() {
           if (data.success === false) {
             const apiError = document.createElement('div');
             apiError.innerHTML = data.errors;
-            form.appendChild(apiError);
-            setTimeout(() => {
-              apiError.remove();
-            }, 5000);
           } else if (data.success === true) {
             // Clear all inputs
             // show success message to the user
@@ -117,34 +112,34 @@ function ReserveForm() {
     }
   };
   return (
-    <div style={{
-      backgroundImage: `url(${doc})`,
-      backgroundPosition: 'center',
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
-    }}
+    <div
+      className="bg-black h-screen flex justify-center items-center flex-col"
+      style={{
+        backgroundImage: `url(${doc})`,
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+      }}
     >
-      <NavLink to={`/landingPage?username=${encodedUsername}`}>
-        <button
-          className="mt-5 text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-32 sm:w-32 px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
-          type="button"
-        >
-          Back
-        </button>
+      <NavLink
+        className="mt-40 md:mt-5 text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-32 sm:w-32 px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+        to={`/landingPage?username=${encodedUsername}`}
+      >
+        Back
       </NavLink>
-      <div className="container my-5 flex justify-center items-center flex-col gap-16 w-screen">
+      <div className="container my-5 md:pl-48 lg:ml-0 flex justify-center items-center flex-col gap-16 w-screen">
         <form
-          className="border-black border-2 rounded-lg p-20 flex flex-col w-1/2 gap-5 shadow-2xl"
+          className="border-black border-2 bg-[#CBE4DE] bg-opacity-30 rounded-lg p-5 md:p-20 flex flex-col lg:w-1/2 w-11/12 md:gap-5 gap-3 shadow-2xl"
           onSubmit={submitHandeller}
         >
           <label
-            className=" mb-2 text-sm font-medium text-gray-900 rounded-lg flex flex-col"
+            className=" block mb-2 text-lg font-medium text-gray-900"
             htmlFor="title"
           >
             title
             <input
               type="text"
-              className=" mb-2 text-sm font-medium text-gray-900 rounded-lg flex flex-col"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               name="title"
               onChange={(e) => {
                 setTitle(e.target.value);
@@ -153,13 +148,14 @@ function ReserveForm() {
           </label>
 
           <label
-            className=" mb-2 text-sm font-medium text-gray-900 rounded-lg flex flex-col"
+            className=" mb-2 text-lg font-medium text-gray-900 rounded-lg flex flex-col"
             htmlFor="reservation"
           >
             reservation date
             <input
               type="text"
-              className=" mb-2 text-sm font-medium text-gray-900 rounded-lg flex flex-col"
+              placeholder="ex. 2-2-2022"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               name="reservation"
               onChange={(e) => {
                 setreservation(e.target.value);
@@ -167,13 +163,14 @@ function ReserveForm() {
             />
           </label>
           <label
-            className=" mb-2 text-sm font-medium text-gray-900 rounded-lg flex flex-col"
+            className=" mb-2 text-lg font-medium text-gray-900 rounded-lg flex flex-col"
             htmlFor="phonenumber"
           >
             phonenumber
             <input
               type="number"
               name="phonenumber"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               onChange={(e) => {
                 setPhonenumber(e.target.value);
               }}
@@ -181,13 +178,13 @@ function ReserveForm() {
           </label>
 
           <label
-            className=" mb-2 text-sm font-medium text-gray-900 rounded-lg flex flex-col"
+            className="text-gray-900 mb-2 text-lg font-medium rounded-lg flex flex-col"
             htmlFor="purpose"
           >
             purpose
             <input
               type="text"
-              className=" mb-2 text-sm font-medium text-gray-900 rounded-lg flex flex-col"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               name="purpose"
               onChange={(e) => {
                 setPurpose(e.target.value);
@@ -196,20 +193,24 @@ function ReserveForm() {
           </label>
 
           <label
-            className=" mb-2 text-sm font-medium text-gray-900 rounded-lg flex flex-col"
+            className=" mb-2 text-lg font-medium text-gray-900 rounded-lg flex flex-col"
             htmlFor="location"
           >
             location
             <input
               type="text"
-              className=" mb-2 text-sm font-medium text-gray-900 rounded-lg flex flex-col"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               name="location"
               onChange={(e) => {
                 setLocation(e.target.value);
               }}
             />
           </label>
-          <select onChange={handleChange}>
+          <select
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            style={{ appearance: 'none' }}
+            onChange={handleChange}
+          >
             <option value="">Choose A Doctor</option>
             <option value="Doctor Kelvin Ben">Doctor Kelvin Ben</option>
             <option value="Doctor Abdullah Nganje">Doctor Abdullah Nganje</option>
@@ -223,7 +224,7 @@ function ReserveForm() {
             className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-32 sm:w-32 px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
             type="submit"
           >
-            Sign up
+            reserve
           </button>
         </form>
       </div>
