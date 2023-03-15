@@ -7,7 +7,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserByUsername } from '../redux/users/Users';
 
-function NavBar() {
+const NavBar = () => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const location = useLocation();
@@ -102,6 +102,6 @@ function NavBar() {
       </ul>
     </div>
   );
-}
+};
 
 export default NavBar;

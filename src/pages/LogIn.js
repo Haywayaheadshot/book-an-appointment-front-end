@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import doc from '../assets/doc_img.jpg';
 
-function LogIn() {
+const LogIn = () => {
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
   const [loginError, setLoginError] = useState('');

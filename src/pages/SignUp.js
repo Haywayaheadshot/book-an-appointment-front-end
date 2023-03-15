@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import doc from '../assets/doc_img.jpg';
 import '../styles/sign-up.css';
 
-function SignUp() {
+const SignUp = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

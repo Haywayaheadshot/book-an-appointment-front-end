@@ -3,7 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import doc from '../assets/doc_img.jpg';
 import '../styles/reservation-form.css';
 
-function ReserveForm() {
+const ReserveForm = () => {
   const [title, setTitle] = useState('');
   const [reservation, setreservation] = useState('');
   const [phonenumber, setPhonenumber] = useState('e.g. 1234567890');
@@ -16,7 +16,7 @@ function ReserveForm() {
   const encodedUsername = encodeURIComponent(username);
   const body = document.getElementById('body');
 
-  function handleChange(event) {
+  const handleChange = (event) => {
     const selectedDoctor = event.target.value;
     setDoctorsname(selectedDoctor);
   }

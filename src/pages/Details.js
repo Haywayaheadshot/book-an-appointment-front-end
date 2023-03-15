@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 // import { getDoctors } from '../redux/landingPage/LandingPage';
 import '../styles/details.css';
 
-function Details({ doctor, closeModal }) {
+const Details = ({ doctor, closeModal }) => {
   const webLocation = useLocation();
   const searchParams = new URLSearchParams(webLocation.search);
   const username = searchParams.get('username');

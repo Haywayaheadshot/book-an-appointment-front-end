@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
-function DeleteDocs({ id }) {
-  function handleDelete() {
+const DeleteDocs = ({ id }) => {
+  const handleDelete = () => {
     axios.delete(`http://localhost:3000/api/doctors/${id}`)
       .then((response) => {
         const body = document.getElementById('body');
@@ -24,7 +24,7 @@ function DeleteDocs({ id }) {
           errorMessage.remove();
         }, 5000);
       });
-  }
+  };
 
   return (
     <section>
@@ -37,7 +37,7 @@ function DeleteDocs({ id }) {
       </button>
     </section>
   );
-}
+};
 
 export default DeleteDocs;
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import doc from '../../assets/doc_img.jpg';
 
-function AddDocForm() {
+const AddDocForm = () => {
   const [name, setName] = useState('');
   const [specialty, setSpecialty] = useState('');
   const [yearsOfExperience, setYearsOfExperience] = useState('');
@@ -299,6 +299,6 @@ function AddDocForm() {
 
     </div>
   );
-}
+};
 
 export default AddDocForm;

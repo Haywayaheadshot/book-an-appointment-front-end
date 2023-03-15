@@ -12,7 +12,7 @@ import Details from './Details';
 import AddDocForm from '../components/dep/AddDocForm';
 // import NavBarWrapper from '../components/NavBarWrapper';
 
-function Main() {
+const Main = () => {
   const location = useLocation();
   const showNavBar = ['/reservationForm', '/landingPage', '/reservationForm', '/reservations', '/addDocForm'].includes(location.pathname);
 

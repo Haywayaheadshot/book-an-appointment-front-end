@@ -6,7 +6,7 @@ import { getDoctors } from '../redux/landingPage/LandingPage';
 import '../styles/landing-page.css';
 import Details from './Details';
 
-function LandingPage() {
+const LandingPage = () => {
   const doctor = useSelector((state) => state.doctors);
   const navigate = useNavigate();
   const dispatch = useDispatch();
