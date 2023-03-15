@@ -10,12 +10,12 @@ function SignUp() {
   const [photo, setPhoto] = useState('');
   const [username, setUsername] = useState('');
 
-  const nameErrorMessage = document.querySelector('.sign-up-name-error');
-  const emailErrorMessage = document.querySelector('.sign-up-email-error');
-  const passErrorMessage = document.querySelector('.sign-up-password-error');
-  const userErrorMessage = document.querySelector('.sign-up-username-error');
-
   const submitHandeller = (e) => {
+    const nameErrorMessage = document.querySelector('.sign-up-name-error');
+    const emailErrorMessage = document.querySelector('.sign-up-email-error');
+    const passErrorMessage = document.querySelector('.sign-up-password-error');
+    const userErrorMessage = document.querySelector('.sign-up-username-error');
+
     e.preventDefault();
     const data = {
       user: {
@@ -140,6 +140,7 @@ function SignUp() {
               setName(e.target.value);
             }}
           />
+          <h2 className="sign-up-name-error">Please input your name!</h2>
         </label>
 
         <label
