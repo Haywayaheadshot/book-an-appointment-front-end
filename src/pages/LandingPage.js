@@ -46,7 +46,7 @@ function LandingPage() {
       <div className="w-full grid gap-4 xl:grid-cols-2">
         {doctor && doctor.map((doctor) => (
           <button type="button" onClick={() => handleShowDetails(doctor)} key={doctor.name}>
-            <section className="doctor-section flex flex-col items-center gap-5 lg:flex-row bg-[#CBE4DE] p-10 lg:p-14 rounded-xl overflow-auto">
+            <section className="doctor-section flex flex-col items-center gap-5 lg:flex-row bg-[#CBE4DE] lg:p-14 rounded-xl overflow-hidden">
               <div className="flex-col justify-center items-center">
                 <img src={doctor.photo} alt="Portrait Of Doc" className="h-40 w-25 rounded-xl mb-5" />
                 <h1 className="lg:text-2xl text-lg font-bold">
@@ -60,12 +60,12 @@ function LandingPage() {
                 <div className="doctor-age-xperience-div lg:text-2xl text-lg">
                   <h4>
                     Age:
-                    <span className="age-xperience-span mr-16">{doctor.age}</span>
+                    <span className="age-xperience-span">{doctor.age}</span>
                     years
                   </h4>
                   <h4>
                     Experience:
-                    <span className="age-xperience-span mr-16">{doctor.years_of_experience}</span>
+                    <span className="age-xperience-span">{doctor.years_of_experience}</span>
                     years
                   </h4>
                 </div>

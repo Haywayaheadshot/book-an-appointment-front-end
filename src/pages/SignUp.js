@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import doc from '../assets/doc_img.jpg';
+import '../styles/sign-up.css';
 
 function SignUp() {
   const [name, setName] = useState('');
@@ -9,12 +10,12 @@ function SignUp() {
   const [photo, setPhoto] = useState('');
   const [username, setUsername] = useState('');
 
-  const nameErrorMessage = document.querySelector('.sign-up-name-error');
-  const emailErrorMessage = document.querySelector('.sign-up-email-error');
-  const passErrorMessage = document.querySelector('.sign-up-password-error');
-  const userErrorMessage = document.querySelector('.sign-up-username-error');
-
   const submitHandeller = (e) => {
+    const nameErrorMessage = document.querySelector('.sign-up-name-error');
+    const emailErrorMessage = document.querySelector('.sign-up-email-error');
+    const passErrorMessage = document.querySelector('.sign-up-password-error');
+    const userErrorMessage = document.querySelector('.sign-up-username-error');
+
     e.preventDefault();
     const data = {
       user: {
@@ -112,6 +113,7 @@ function SignUp() {
 
   return (
     <div
+      id="sign-up-div"
       className="m-0 flex justify-center items-center flex-col gap-10 w-screen h-screen"
       style={{
         backgroundImage: `url(${doc})`,
@@ -121,7 +123,7 @@ function SignUp() {
       }}
     >
       <form
-        className="border-black bg-[#0E8388] bg-opacity-30 border-2 rounded-lg md:p-20 p-10 flex flex-col md:w-1/2 w-fill px-5 gap-5 shadow-2xl"
+        className="sign-up-form border-black bg-[#0E8388] bg-opacity-30 border-2 rounded-lg md:p-20 p-10 flex flex-col md:w-1/2 w-fill px-5 gap-5 shadow-2xl"
         onSubmit={submitHandeller}
       >
         <label
@@ -133,6 +135,7 @@ function SignUp() {
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
             type="text"
             name="name"
+            value={name}
             onChange={(e) => {
               setName(e.target.value);
             }}
@@ -149,6 +152,7 @@ function SignUp() {
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
             type="email"
             name="email"
+            value={email}
             onChange={(e) => {
               setEmail(e.target.value);
             }}
@@ -164,6 +168,7 @@ function SignUp() {
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
             type="password"
             name="password"
+            value={password}
             onChange={(e) => {
               setPassword(e.target.value);
             }}
@@ -197,6 +202,7 @@ function SignUp() {
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
             type="text"
             name="username"
+            value={username}
             onChange={(e) => {
               setUsername(e.target.value);
             }}

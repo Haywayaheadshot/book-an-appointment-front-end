@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import doc from '../assets/doc_img.jpg';
+import '../styles/reservation-form.css';
 
 function ReserveForm() {
   const [title, setTitle] = useState('');
@@ -13,7 +14,7 @@ function ReserveForm() {
   const searchParams = new URLSearchParams(webLocation.search);
   const username = searchParams.get('username');
   const encodedUsername = encodeURIComponent(username);
-  const form = document.querySelector('.reservations-form');
+  const body = document.getElementById('body');
 
   function handleChange(event) {
     const selectedDoctor = event.target.value;
@@ -33,34 +34,58 @@ function ReserveForm() {
     };
     if (data.title === '') {
       const errorEl = document.createElement('p');
+      errorEl.className = 'apiErrorClass';
       errorEl.innerHTML = 'Please enter a title.';
       errorEl.classList.add('error');
-      form.appendChild(errorEl);
+      document.querySelector('#EM').appendChild(errorEl);
+      setTimeout(() => {
+        errorEl.remove();
+      }, 1000);
     } else if (data.reservation_date === '') {
       const errorEl = document.createElement('p');
+      errorEl.className = 'apiErrorClass';
       errorEl.innerHTML = 'Please enter a reservation date.';
       errorEl.classList.add('error');
-      form.appendChild(errorEl);
-    } else if (data.phone_number.length < 8) {
+      document.querySelector('#EM').appendChild(errorEl);
+      setTimeout(() => {
+        errorEl.remove();
+      }, 1000);
+    } else if (data.phone_number.length !== 8) {
       const errorEl = document.createElement('p');
-      errorEl.innerHTML = 'Please enter a valid phone number.';
+      errorEl.className = 'apiErrorClass';
+      errorEl.innerHTML = 'Please enter a valid phone number. It must be 8 characters';
       errorEl.classList.add('error');
-      form.appendChild(errorEl);
+      document.querySelector('#EM').appendChild(errorEl);
+      setTimeout(() => {
+        errorEl.remove();
+      }, 1000);
     } else if (data.purpose === '') {
       const errorEl = document.createElement('p');
+      errorEl.className = 'apiErrorClass';
       errorEl.innerHTML = 'Please enter a purpose.';
       errorEl.classList.add('error');
-      form.appendChild(errorEl);
+      document.querySelector('#EM').appendChild(errorEl);
+      setTimeout(() => {
+        errorEl.remove();
+      }, 1000);
     } else if (data.location === '') {
       const errorEl = document.createElement('p');
+      errorEl.className = 'apiErrorClass';
       errorEl.innerHTML = 'Please enter a location.';
       errorEl.classList.add('error');
-      form.appendChild(errorEl);
+      document.querySelector('#EM').appendChild(errorEl);
+      setTimeout(() => {
+        errorEl.remove();
+      }, 1000);
     } else if (data.doctor_name === '') {
       const errorEl = document.createElement('p');
+      errorEl.className = 'apiErrorClass text-red-500';
       errorEl.innerHTML = 'Please enter a doctor name.';
       errorEl.classList.add('error');
-      form.appendChild(errorEl);
+      document.querySelector('#EM').appendChild(errorEl);
+      setTimeout(() => {
+        errorEl.remove();
+      }, 1000);
     } else {
       const url = 'http://localhost:3000/api/reservations';
       const options = {
@@ -98,7 +123,7 @@ function ReserveForm() {
                 There seem to be a problem with the server. Please try again later!
               </h4>
             `;
-            form.appendChild(apiOtherError);
+            body.appendChild(apiOtherError);
             setTimeout(() => {
               apiOtherError.remove();
             }, 5000);
@@ -136,7 +161,7 @@ function ReserveForm() {
             className=" block mb-2 text-lg font-medium text-gray-900"
             htmlFor="title"
           >
-            title
+            Title
             <input
               type="text"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -151,7 +176,7 @@ function ReserveForm() {
             className=" mb-2 text-lg font-medium text-gray-900 rounded-lg flex flex-col"
             htmlFor="reservation"
           >
-            reservation date
+            Reservation Date
             <input
               type="text"
               placeholder="ex. 2-2-2022"
@@ -166,7 +191,7 @@ function ReserveForm() {
             className=" mb-2 text-lg font-medium text-gray-900 rounded-lg flex flex-col"
             htmlFor="phonenumber"
           >
-            phonenumber
+            Phone Number
             <input
               type="number"
               name="phonenumber"
@@ -181,7 +206,7 @@ function ReserveForm() {
             className="text-gray-900 mb-2 text-lg font-medium rounded-lg flex flex-col"
             htmlFor="purpose"
           >
-            purpose
+            Purpose
             <input
               type="text"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -196,7 +221,7 @@ function ReserveForm() {
             className=" mb-2 text-lg font-medium text-gray-900 rounded-lg flex flex-col"
             htmlFor="location"
           >
-            location
+            Location
             <input
               type="text"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -219,12 +244,12 @@ function ReserveForm() {
             </option>
             <option value="Doctor Abubakar Ummar">Doctor Abubakar Ummar</option>
           </select>
-
+          <div id="EM" />
           <button
             className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-32 sm:w-32 px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
             type="submit"
           >
-            reserve
+            Reserve
           </button>
         </form>
       </div>
