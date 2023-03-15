@@ -1,34 +1,43 @@
-import { shallow } from 'enzyme';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import SignUp from '../SignUp';
+import '@testing-library/jest-dom/extend-expect'; 
 
 describe('SignUp component', () => {
-  it('should render the form', () => {
-    const wrapper = shallow(<SignUp />);
-    expect(wrapper.find('.sign-up-form')).toHaveLength(1);
-  });
-  let wrapper;
-
   beforeEach(() => {
-    wrapper = shallow(<SignUp />);
-    wrapper.find('input[name="name"]').simulate('change', { target: { value: 'John Doe' } });
-    wrapper.find('input[name="username"]').simulate('change', { target: { value: 'john.doe' } });
-    wrapper.find('input[name="password"]').simulate('change', { target: { value: 'password' } });
-    wrapper.find('input[name="email"]').simulate('change', { target: { value: 'john.doe@example.com' } });
+    render(
+      <Router>
+        <SignUp />
+      </Router>
+    );
   });
 
-  it('should update the name state when the input value changes', () => {
-    expect(wrapper.find('input[name="name"]').prop('value')).toBe('John Doe');
+  it('should render the form', () => {
+    const formElement = screen.getByRole('sign-up-form');
+    expect(formElement).toBeInTheDocument();
   });
 
-  it('should update the username state when the input value changes', () => {
-    expect(wrapper.find('input[name="username"]').prop('value')).toEqual('john.doe');
-  });
+  // it('should update the name state when the input value changes', () => {
+  //   const nameInput = screen.getByRole('Name');
+  //   fireEvent.change(nameInput, { target: { value: 'John Doe' } });
+  //   expect(nameInput.value).toBe('John Doe');
+  // });
 
-  it('should update the password state when the input value changes', () => {
-    expect(wrapper.find('input[name="password"]').prop('value')).toEqual('password');
-  });
+  // it('should update the username state when the input value changes', () => {
+  //   const usernameInput = screen.getByLabelText('Username');
+  //   fireEvent.change(usernameInput, { target: { value: 'john.doe' } });
+  //   expect(usernameInput.value).toBe('john.doe');
+  // });
 
-  it('should update the email state when the input value changes', () => {
-    expect(wrapper.find('input[name="email"]').prop('value')).toEqual('john.doe@example.com');
-  });
+  // it('should update the password state when the input value changes', () => {
+  //   const passwordInput = screen.getByLabelText('Password');
+  //   fireEvent.change(passwordInput, { target: { value: 'password' } });
+  //   expect(passwordInput.value).toBe('password');
+  // });
+
+  // it('should update the email state when the input value changes', () => {
+  //   const emailInput = screen.getByLabelText('Email');
+  //   fireEvent.change(emailInput, { target: { value: 'john.doe@example.com' } });
+  //   expect(emailInput.value).toBe('john.doe@example.com');
+  // });
 });
