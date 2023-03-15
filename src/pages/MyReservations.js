@@ -80,6 +80,6 @@ const MyReservations = () => {
       </div>
     </>
   );
-}
+};
 
 export default MyReservations;

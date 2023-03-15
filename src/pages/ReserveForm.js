@@ -19,7 +19,7 @@ const ReserveForm = () => {
   const handleChange = (event) => {
     const selectedDoctor = event.target.value;
     setDoctorsname(selectedDoctor);
-  }
+  };
 
   const submitHandeller = (e) => {
     e.preventDefault();
@@ -256,6 +256,6 @@ const ReserveForm = () => {
 
     </div>
   );
-}
+};
 
 export default ReserveForm;

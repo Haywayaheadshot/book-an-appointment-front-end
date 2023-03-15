@@ -84,7 +84,7 @@ const Details = ({ doctor, closeModal }) => {
       </NavLink>
     </div>
   );
-}
+};
 
 export default Details;
 

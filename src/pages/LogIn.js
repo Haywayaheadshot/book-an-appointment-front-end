@@ -128,6 +128,6 @@ const LogIn = () => {
       </section>
     </div>
   );
-}
+};
 
 export default LogIn;
