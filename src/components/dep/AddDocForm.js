@@ -28,11 +28,11 @@ const AddDocForm = () => {
     const data = {
       name,
       specialty,
-      yearsOfExperience,
+      years_of_experience: yearsOfExperience,
       bio,
       age,
       qualifications,
-      locationOfWork,
+      location_of_work: locationOfWork,
       photo: photo || 'default-avatar.png',
     };
     if (data.name === '') {
