@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
 import doc from '../assets/doc_img.jpg';
+import { getDoctors } from '../redux/landingPage/LandingPage';
 import '../styles/reservation-form.css';
 
 const ReserveForm = () => {
@@ -9,16 +11,23 @@ const ReserveForm = () => {
   const [phonenumber, setPhonenumber] = useState('e.g. 1234567890');
   const [purpose, setPurpose] = useState('');
   const [location, setLocation] = useState('');
-  const [doctorsName, setDoctorsname] = useState('');
+  const [docId, setDocId] = useState('');
+  const doctor = useSelector((state) => state.doctors);
+  const dispatch = useDispatch();
+
   const webLocation = useLocation();
   const searchParams = new URLSearchParams(webLocation.search);
   const username = searchParams.get('username');
   const encodedUsername = encodeURIComponent(username);
   const body = document.getElementById('body');
 
+  useEffect(() => {
+    dispatch(getDoctors());
+  }, [dispatch]);
+
   const handleChange = (event) => {
     const selectedDoctor = event.target.value;
-    setDoctorsname(selectedDoctor);
+    setDocId(selectedDoctor);
   };
 
   const submitHandeller = (e) => {
@@ -29,8 +38,8 @@ const ReserveForm = () => {
       phone_number: phonenumber,
       purpose,
       location,
-      doctor_name: doctorsName,
-      username,
+      doctor_id: docId,
+      userName: username,
     };
     if (data.title === '') {
       const errorEl = document.createElement('p');
@@ -178,7 +187,7 @@ const ReserveForm = () => {
           >
             Reservation Date
             <input
-              type="text"
+              type="date"
               placeholder="ex. 2-2-2022"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               name="reservation"
@@ -234,16 +243,15 @@ const ReserveForm = () => {
           <select
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             style={{ appearance: 'none' }}
-            onChange={handleChange}
+            value={docId}
+            onChange={(e) => handleChange(e)}
           >
             <option value="">Choose A Doctor</option>
-            <option value="Doctor Kelvin Ben">Doctor Kelvin Ben</option>
-            <option value="Doctor Abdullah Nganje">Doctor Abdullah Nganje</option>
-            <option value="Doctor Mohammed El-Deeb">
-              Doctor Mohammed El-Deeb
-            </option>
-            <option value="Doctor Abubakar Ummar">Doctor Abubakar Ummar</option>
+            {doctor && doctor.map((doc) => (
+              <option value={doc.id} key={doc.id}>{doc.name}</option>
+            ))}
           </select>
+
           <div id="EM" />
           <button
             className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-32 sm:w-32 px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"

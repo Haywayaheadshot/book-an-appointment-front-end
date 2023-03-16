@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import doc from '../assets/doc_img.jpg';
+import '../styles/reservation-form.css';
 
 const LogIn = () => {
   const [password, setPassword] = useState('');
@@ -46,6 +47,7 @@ const LogIn = () => {
             // handle other cases
             const apiOtherError = document.createElement('div');
             apiOtherError.innerHTML = data.error;
+            apiOtherError.className = 'apiErrorClass';
             form.appendChild(apiOtherError);
             setTimeout(() => {
               apiOtherError.remove();
@@ -74,7 +76,7 @@ const LogIn = () => {
       </NavLink>
       <div className="container my-5 flex justify-center items-center flex-col gap-16 w-screen h-96">
         <form
-          className="border-black border-2 bg-[#0E8388] bg-opacity-30 rounded-lg w-11/12 mx-28 md:p-20 p-5 flex flex-col md:w-1/2 gap-5 shadow-2xl"
+          className="sign-up-form border-black border-2 bg-[#0E8388] bg-opacity-30 rounded-lg w-11/12 mx-28 md:p-20 p-5 flex flex-col md:w-1/2 gap-5 shadow-2xl"
           onSubmit={submitHandeller}
         >
           <label
