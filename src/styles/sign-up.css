@@ -1,0 +1,30 @@
+/* .sign-up-form {
+  display: grid;
+  place-items: center;
+  padding: 15vh 0;
+  gap: 20px;
+} */
+
+.sign-up-username-error,
+.sign-up-password-error,
+.sign-up-email-error,
+.sign-up-name-error {
+  display: none;
+  color: red;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* .sign-up-form label,
+.sign-up-form section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.sign-up-form label input {
+  min-width: 60vw;
+  min-height: 20px;
+} */
