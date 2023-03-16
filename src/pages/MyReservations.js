@@ -40,16 +40,16 @@ const MyReservations = () => {
           && mappedReservations.map((reservation) => (
             <section
               className="reservations-section border rounded-3xl bg-[#0E8388] bg-opacity-30 hover:bg-opacity-50 p-5"
-              key={reservation.id}
+              key={reservation.reservation.id}
             >
               <div className="reservation-header">
                 <h1 className="text-xl">
                   Title:
-                  <span className="ml-2">{reservation.title}</span>
+                  <span className="ml-2">{reservation.reservation.title}</span>
                 </h1>
                 <h3>
                   Date:
-                  <span className="ml-2">{reservation.reservation_date}</span>
+                  <span className="ml-2">{reservation.reservation.reservation_date}</span>
                 </h3>
               </div>
               <div className="flex mt-5">
@@ -60,17 +60,17 @@ const MyReservations = () => {
                   </h4>
                   <h4>
                     <b>Purpose:</b>
-                    <span className="ml-2">{reservation.purpose}</span>
+                    <span className="ml-2">{reservation.reservation.purpose}</span>
                   </h4>
                 </div>
                 <div className="flex-col gap-4">
                   <h3>
                     Location:
-                    <span className="ml-2">{reservation.location}</span>
+                    <span className="ml-2">{reservation.reservation.location}</span>
                   </h3>
                   <h4>
                     Contact:
-                    <span className="ml-2">{reservation.phone_number}</span>
+                    <span className="ml-2">{reservation.reservation.phone_number}</span>
                   </h4>
                 </div>
               </div>
