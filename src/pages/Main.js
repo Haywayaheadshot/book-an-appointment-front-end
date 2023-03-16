@@ -9,11 +9,12 @@ import NavBar from '../components/NavBar';
 import MyReservations from './MyReservations';
 import ReserveForm from './ReserveForm';
 import Details from './Details';
+import AddDocForm from '../components/dep/AddDocForm';
 // import NavBarWrapper from '../components/NavBarWrapper';
 
-function Main() {
+const Main = () => {
   const location = useLocation();
-  const showNavBar = ['/reservationForm', '/landingPage', '/reservationForm', '/reservations'].includes(location.pathname);
+  const showNavBar = ['/reservationForm', '/landingPage', '/reservationForm', '/reservations', '/addDocForm'].includes(location.pathname);
 
   return (
     <>
@@ -25,11 +26,12 @@ function Main() {
         <Route exact path="/landingPage" element={<LandingPage />} />
         <Route exact path="/reservations" element={<MyReservations />} />
         <Route exact path="/reservationForm" element={<ReserveForm />} />
+        <Route exact path="/addDocForm" element={<AddDocForm />} />
         {/* </NavBarWrapper> */}
         <Route exact path="/:id" element={<Details />} />
       </Routes>
     </>
   );
-}
+};
 
 export default Main;

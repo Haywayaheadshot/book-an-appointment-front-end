@@ -5,14 +5,12 @@ import {
 import './styles/App.css';
 import Main from './pages/Main';
 
-function App() {
-  return (
-    <Router>
-      <div className="">
-        <Main />
-      </div>
-    </Router>
-  );
-}
+const App = () => (
+  <Router>
+    <div className="">
+      <Main />
+    </div>
+  </Router>
+);
 
 export default App;

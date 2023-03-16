@@ -5,7 +5,7 @@ import { getReservations } from '../redux/myReservations/MyReservations';
 import doc from '../assets/doc_img.jpg';
 import '../styles/my-reservations.css';
 
-function MyReservations() {
+const MyReservations = () => {
   const dispatch = useDispatch();
   const webLocation = useLocation();
   const searchParams = new URLSearchParams(webLocation.search);
@@ -80,6 +80,6 @@ function MyReservations() {
       </div>
     </>
   );
-}
+};
 
 export default MyReservations;
