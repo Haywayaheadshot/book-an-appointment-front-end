@@ -60,7 +60,11 @@ const LandingPage = () => {
             <button type="button" onClick={() => handleShowDetails(doctor)}>
               <section>
                 <div className="flex-col justify-center items-center">
-                  <img src={doctor.photo} alt="Portrait Of Doc" className="h-40 w-25 rounded-xl mb-5" />
+                  <img
+                    src={doctor.photo ? doctor.photo : '/default-avatar.png'}
+                    alt="Portrait Of Doc"
+                    className="h-40 w-25 rounded-xl mb-5"
+                  />
                   <h1 className="lg:text-2xl text-lg font-bold">
                     {doctor.name}
                   </h1>

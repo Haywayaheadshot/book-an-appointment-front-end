@@ -33,8 +33,9 @@ const AddDocForm = () => {
       age,
       qualifications,
       location_of_work: locationOfWork,
-      photo: photo || 'default-avatar.png',
+      photo,
     };
+
     if (data.name === '') {
       const errorEl = document.createElement('p');
       errorEl.className = 'apiErrorClass';
@@ -53,7 +54,7 @@ const AddDocForm = () => {
       setTimeout(() => {
         errorEl.remove();
       }, 1000);
-    } else if (data.yearsOfExperience === '') {
+    } else if (data.years_of_experience === '') {
       const errorEl = document.createElement('p');
       errorEl.className = 'apiErrorClass';
       errorEl.innerHTML = 'Please enter Years of experience!';
@@ -89,7 +90,7 @@ const AddDocForm = () => {
       setTimeout(() => {
         errorEl.remove();
       }, 1000);
-    } else if (data.locationOfWork === '') {
+    } else if (data.location_of_work === '') {
       const errorEl = document.createElement('p');
       errorEl.className = 'apiErrorClass text-red-500';
       errorEl.innerHTML = 'Please enter a Location of work.';
@@ -283,7 +284,8 @@ const AddDocForm = () => {
               type="file"
               name="photo"
               onChange={(e) => {
-                setPhoto(e.target.value);
+                const file = e.target.files?.[0];
+                if (file) setPhoto(file);
               }}
             />
           </label>

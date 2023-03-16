@@ -23,7 +23,7 @@ const SignUp = () => {
         email,
         password,
         username,
-        photo: photo || 'default-avatar.png', // set default image path if photo is empty
+        photo: photo || 'default-avatar.png',
       },
     };
     if (data.user.name === '') {

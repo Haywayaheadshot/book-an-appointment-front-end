@@ -22,7 +22,7 @@ const Details = ({ doctor, closeModal }) => {
       </button>
       <section className="details-sec md:flex items-center justify-center w-full gap-5" key={doctor.id}>
         <img
-          src={doctor.photo}
+          src={doctor.photo ? doctor.photo : '/default-avatar.png'}
           alt="Doctors Portrait"
           className="w-2/3"
         />
