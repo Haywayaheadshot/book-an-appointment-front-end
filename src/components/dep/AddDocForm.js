@@ -284,8 +284,9 @@ const AddDocForm = () => {
               type="file"
               name="photo"
               onChange={(e) => {
-                const file = e.target.files?.[0];
-                if (file) setPhoto(file);
+                // const file = e.target.files?.[0];
+                // if (file) setPhoto(file);
+                setPhoto(e.target.value);
               }}
             />
           </label>

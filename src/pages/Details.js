@@ -28,7 +28,7 @@ const Details = ({ doctor, closeModal }) => {
         />
         <div className="">
           <div className=" gap-5 details-age-div">
-            <h4 className="text-2xl text-green-800">doctor info</h4>
+            <h4 className="text-2xl text-green-800">Doctor info</h4>
             <div className="flex-col flex gap-5">
               <div className="lg:flex flex-col lg:gap-10 gap-5">
                 <h5 className="text-xl">

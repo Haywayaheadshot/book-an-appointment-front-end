@@ -25,7 +25,7 @@ const LogIn = () => {
         'Password must be 6 characters or more. Please check again!',
       );
     } else {
-      const url = 'http://localhost:3000/api/login';
+      const url = 'https://bookadoc.onrender.com/api/login';
       const options = {
         method: 'POST',
         headers: {

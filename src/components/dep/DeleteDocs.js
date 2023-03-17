@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const DeleteDocs = ({ id }) => {
   const handleDelete = () => {
-    axios.delete(`http://localhost:3000/api/doctors/${id}`)
+    axios.delete(`https://bookadoc.onrender.com/api/doctors/${id}`)
       .then((response) => {
         const body = document.getElementById('body');
         const sucessMessage = document.createElement('p');

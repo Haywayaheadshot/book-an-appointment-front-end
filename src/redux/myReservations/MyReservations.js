@@ -9,7 +9,7 @@ const initialState = [];
 export const getReservations = createAsyncThunk(
   GET_RESERVATIONS,
   async (username) => {
-    const response = await axios.get(`http://localhost:3000/api/reservations?username=${username}`);
+    const response = await axios.get(`https://bookadoc.onrender.com/api/reservations?username=${username}`);
     return response.data;
   },
 );

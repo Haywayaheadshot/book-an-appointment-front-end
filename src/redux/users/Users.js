@@ -9,7 +9,7 @@ const initialState = [];
 export const getUserByUsername = createAsyncThunk(
   GET_USER_BY_USERNAME,
   async (username) => {
-    const response = await axios.get(`http://localhost:3000/api/users?username=${username}`);
+    const response = await axios.get(`https://bookadoc.onrender.com/api/users?username=${username}`);
     const users = response.data;
     return users;
   },

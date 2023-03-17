@@ -5,7 +5,7 @@ const GET_DOCTORS = 'BOOK-AN-APPOINTMENT-FRONT-END/src/redux/landingPage/getDoct
 
 const initialState = [];
 
-const getDoctorsApi = 'http://localhost:3000/api/doctors';
+const getDoctorsApi = 'https://bookadoc.onrender.com/api/doctors';
 
 // action creators to get doctors
 export const getDoctors = createAsyncThunk(

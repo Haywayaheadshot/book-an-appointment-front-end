@@ -96,7 +96,7 @@ const ReserveForm = () => {
         errorEl.remove();
       }, 1000);
     } else {
-      const url = 'http://localhost:3000/api/reservations';
+      const url = 'https://bookadoc.onrender.com/api/reservations';
       const options = {
         method: 'POST',
         headers: {

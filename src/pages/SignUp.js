@@ -51,7 +51,7 @@ const SignUp = () => {
       passErrorMessage.style.display = 'none';
       userErrorMessage.style.display = 'block';
     } else {
-      const url = 'http://localhost:3000/api/signup';
+      const url = 'https://bookadoc.onrender.com/api/signup';
       const options = {
         method: 'POST',
         headers: {
