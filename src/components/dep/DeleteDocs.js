@@ -4,25 +4,26 @@ import PropTypes from 'prop-types';
 
 const DeleteDocs = ({ id }) => {
   const handleDelete = () => {
-    axios.delete(`https://bookadoc.onrender.com/api/doctors/${id}`)
+    axios.delete(`http://localhost:3000/api/doctors/${id}`)
       .then((response) => {
-        const body = document.getElementById('body');
-        const sucessMessage = document.createElement('p');
-        sucessMessage.innerHTML = response.data;
-        body.appendChild(sucessMessage);
-        window.location.reload();
-      })
-      .catch(() => {
-        const body = document.getElementById('body');
-        const errorMessage = document.createElement('p');
-        errorMessage.innerHTML = `
-        Sorry! There's something wrong with the server at this moment.
-        Try again later
-        `;
-        body.appendChild(errorMessage);
-        setTimeout(() => {
-          errorMessage.remove();
-        }, 5000);
+        if (response.message === 'success') {
+        // const body = document.getElementById('body');
+        // const sucessMessage = document.createElement('p');
+        // sucessMessage.innerHTML = response.data;
+        // body.appendChild(sucessMessage);
+          window.location.reload();
+        } else {
+          const body = document.getElementById('body');
+          const errorMessage = document.createElement('p');
+          errorMessage.innerHTML = `
+          Sorry! There's something wrong with the server at this moment.
+          Try again later
+          `;
+          body.appendChild(errorMessage);
+          setTimeout(() => {
+            errorMessage.remove();
+          }, 5000);
+        }
       });
   };
 
